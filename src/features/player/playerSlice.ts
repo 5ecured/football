@@ -24,9 +24,13 @@ export const playerSlice = createSlice({
     reducers: {
         addPlayer: (state, action: PayloadAction<PlayerInterface>) => {
             state.mainArray.unshift(action.payload)
+        },
+        deletePlayer: (state, action: PayloadAction<number | null>) => {
+            const temp = state.mainArray.filter(player => player.id !== action.payload)
+            state.mainArray = temp
         }
     }
 })
 
-export const { addPlayer } = playerSlice.actions
+export const { addPlayer, deletePlayer } = playerSlice.actions
 export default playerSlice.reducer

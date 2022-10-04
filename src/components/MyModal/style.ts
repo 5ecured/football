@@ -22,4 +22,13 @@ export const useStyles = makeStyles({
         width: '50%',
         height: '50px'
     },
+    imageField: {
+        display: 'flex',
+        justifyContent: 'space-around',
+        alignItems: 'center',
+        border: '1px solid grey',
+        padding: '10px 0',
+        width: '50%',
+        borderRadius: '5px'
+    }
 })

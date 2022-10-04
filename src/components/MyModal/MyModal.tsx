@@ -3,15 +3,8 @@ import React, { useState } from 'react'
 import { useStyles } from './style'
 import AddIcon from '@mui/icons-material/Add';
 import { useDispatch } from 'react-redux';
-import { addPlayer } from '../../features/player/playerSlice';
+import { addPlayer, PlayerInterface } from '../../features/player/playerSlice';
 import { delay } from '../../utils/functions'
-
-interface Player {
-    id: number | null
-    name: string
-    club: string,
-    image?: string
-}
 
 interface Props {
     setOpen: React.Dispatch<React.SetStateAction<boolean>>
@@ -24,7 +17,7 @@ const Modal: React.FC<Props> = ({ setOpen }) => {
 
 
     const [selectedFile, setSelectedFile] = useState<object | undefined>(undefined)
-    const [player, setPlayer] = useState<Player>({ id: null, name: '', club: '' })
+    const [player, setPlayer] = useState<PlayerInterface>({ id: null, name: '', club: '' })
     const [isNameEmpty, setIsNameEmpty] = useState<boolean>(false)
     const [isClubEmpty, setIsClubEmpty] = useState<boolean>(false)
 
@@ -86,8 +79,10 @@ const Modal: React.FC<Props> = ({ setOpen }) => {
                         value={player.club}
                     />
                     {isClubEmpty && <Typography color='error'>Please enter a club</Typography>}
-                    {/* <TextField variant='outlined' label='Enter player image (optional)' className={classes.field} /> */}
-                    {/* <input type='file' name='file' onChange={handleFileUpload} /> */}
+                    <Box className={classes.imageField}>
+                        <Typography>Image (optional)</Typography>
+                        <input type='file' name='file' onChange={handleFileUpload} />
+                    </Box>
                     <Button type='submit' className={classes.addPlayer} variant='contained'>
                         <AddIcon />
                     </Button>
