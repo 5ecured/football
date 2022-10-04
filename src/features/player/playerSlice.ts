@@ -5,7 +5,8 @@ import { initialData } from "../../utils/initialData"
 export interface PlayerInterface {
     id: number
     name: string
-    club: string
+    club: string,
+    image?: string
 }
 
 export interface PlayerState {

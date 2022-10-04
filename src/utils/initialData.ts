@@ -1,7 +1,16 @@
+import ronaldo from '../asset/ronaldo.jpg'
+import messi from '../asset/messi.jpg'
+import drogba from '../asset/drogba.png'
+import kroos from '../asset/kroos.jpg'
+import lewandowski from '../asset/lewandowski.jpg'
+import kaka from '../asset/kaka.jpg'
+
+
 interface playerInterface {
     id: number
     name: string
-    club: string
+    club: string,
+    image?: string
 }
 
 export const initialData: playerInterface[] = [
@@ -9,25 +18,36 @@ export const initialData: playerInterface[] = [
         id: 1,
         name: 'Cristiano Ronaldo',
         club: 'Manchester United',
+        image: ronaldo
     },
     {
         id: 2,
         name: 'Lionel Messi',
-        club: 'Paris Saint Germain'
+        club: 'Paris Saint Germain',
+        image: messi
     },
     {
         id: 3,
         name: 'Didier Drogba',
-        club: 'Chelsea'
+        club: 'Chelsea',
+        image: drogba
     },
     {
         id: 4,
         name: 'Toni Kroos',
-        club: 'Real Madrid'
+        club: 'Real Madrid',
+        image: kroos
     },
     {
         id: 5,
         name: 'Robert Lewandowski',
-        club: 'Barcelona'
+        club: 'Barcelona',
+        image: lewandowski
     },
+    {
+        id: 6,
+        name: 'Kaka',
+        club: 'AC Milan',
+        image: kaka
+    }
 ]
