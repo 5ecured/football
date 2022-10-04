@@ -26,6 +26,7 @@ const Modal: React.FC<Props> = ({ setOpen }) => {
     const [selectedFile, setSelectedFile] = useState<object | undefined>(undefined)
     const [player, setPlayer] = useState<Player>({ id: null, name: '', club: '' })
     const [isNameEmpty, setIsNameEmpty] = useState<boolean>(false)
+    const [isClubEmpty, setIsClubEmpty] = useState<boolean>(false)
 
     const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
         setSelectedFile(e.target.files![0])
@@ -35,14 +36,31 @@ const Modal: React.FC<Props> = ({ setOpen }) => {
         setPlayer({ ...player, [e.target.name]: e.target.value })
     }
 
+    const triggerNameError = async () => {
+        setIsNameEmpty(true)
+        await delay(1500)
+        setIsNameEmpty(false)
+    }
+
+    const triggerClubError = async () => {
+        setIsClubEmpty(true)
+        await delay(1500)
+        setIsClubEmpty(false)
+    }
+
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         if (!player.name) {
-
+            triggerNameError()
+        }
+        if (!player.club) {
+            triggerClubError()
         }
 
-        dispatch(addPlayer(player))
-        setOpen(false)
+        if (player.name && player.club) {
+            dispatch(addPlayer(player))
+            setOpen(false)
+        }
     }
 
     return (
@@ -58,6 +76,7 @@ const Modal: React.FC<Props> = ({ setOpen }) => {
                         name='name'
                         value={player.name}
                     />
+                    {isNameEmpty && <Typography color='error'>Please enter a name</Typography>}
                     <TextField
                         variant='outlined'
                         label='Enter player club'
@@ -66,6 +85,7 @@ const Modal: React.FC<Props> = ({ setOpen }) => {
                         name='club'
                         value={player.club}
                     />
+                    {isClubEmpty && <Typography color='error'>Please enter a club</Typography>}
                     {/* <TextField variant='outlined' label='Enter player image (optional)' className={classes.field} /> */}
                     {/* <input type='file' name='file' onChange={handleFileUpload} /> */}
                     <Button type='submit' className={classes.addPlayer} variant='contained'>
