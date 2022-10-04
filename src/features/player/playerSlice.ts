@@ -1,12 +1,19 @@
 import { createSlice } from "@reduxjs/toolkit"
 import type { PayloadAction } from '@reduxjs/toolkit'
+import { initialData } from "../../utils/initialData"
+
+export interface PlayerInterface {
+    id: number
+    name: string
+    club: string
+}
 
 export interface PlayerState {
-    mainArray: any[]
+    mainArray: PlayerInterface[]
 }
 
 const initialState: PlayerState = {
-    mainArray: []
+    mainArray: initialData
 }
 
 export const playerSlice = createSlice({
