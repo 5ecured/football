@@ -1,7 +1,8 @@
-import { CardActions, CardContent, CardMedia, Grid, Card, Typography, Button } from '@mui/material'
+import { CardActions, CardContent, CardMedia, Grid, Card, Typography, Button, Box } from '@mui/material'
 import React from 'react'
 import { PlayerInterface } from '../../features/player/playerSlice'
 import { useStyles } from './style'
+import DeleteIcon from '@mui/icons-material/Delete';
 
 interface Props {
   display: PlayerInterface[]
@@ -24,9 +25,11 @@ const IndividualCard: React.FC<Props> = ({ display }) => {
             <b>Club</b>: {player.club}
           </Typography>
         </CardContent>
-        <CardActions className={classes.center}>
-          <Button variant='contained'>Player info</Button>
-          <Button variant='outlined'>Delete</Button>
+        <CardActions className={classes.cardActions}>
+          <Box mb={2}>
+            <Button variant='contained'>Player info</Button>
+            <Button variant='outlined'><DeleteIcon /></Button>
+          </Box>
         </CardActions>
       </Card>
     </Grid>

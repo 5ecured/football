@@ -5,5 +5,8 @@ export const useStyles = makeStyles({
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center'
+    },
+    add: {
+        width: '300px'
     }
 })
