@@ -7,7 +7,7 @@ import kaka from '../asset/kaka.jpg'
 
 
 interface playerInterface {
-    id: number
+    id: number | null
     name: string
     club: string,
     image?: string

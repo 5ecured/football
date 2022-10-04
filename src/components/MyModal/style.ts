@@ -18,9 +18,8 @@ export const useStyles = makeStyles({
     field: {
         width: '50%'
     },
-    stack: {
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-    }
+    addPlayer: {
+        width: '50%',
+        height: '50px'
+    },
 })

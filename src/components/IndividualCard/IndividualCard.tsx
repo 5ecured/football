@@ -12,17 +12,17 @@ const IndividualCard: React.FC<Props> = ({ display }) => {
   const classes = useStyles()
 
   const render = display.map((player, i) => (
-    <Grid item xs={12} lg={4} className={classes.center}>
-      <Card key={i}>
+    <Grid item xs={12} lg={4} className={classes.center} mt={5} key={i}>
+      <Card>
         <CardMedia
           image={player.image}
           className={classes.image}
         />
         <CardContent>
-          <Typography>
-            <b>Name</b>: {player.name}
+          <Typography textAlign='center'>
+            <b>{player.name}</b>
             <br />
-            <b>Club</b>: {player.club}
+            <b>{player.club}</b>
           </Typography>
         </CardContent>
         <CardActions className={classes.cardActions}>

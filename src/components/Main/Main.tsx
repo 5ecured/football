@@ -10,7 +10,7 @@ const Main: React.FC = () => {
   const classes = useStyles()
   const display = useSelector((state: RootState) => state.player.mainArray)
 
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState<boolean>(false)
 
   return (
     <Container maxWidth='lg'>
@@ -23,7 +23,9 @@ const Main: React.FC = () => {
         onClose={() => setOpen(false)}
         className={classes.center}
       >
-        <MyModal />
+        <Box>
+          <MyModal setOpen={setOpen} />
+        </Box>
       </Modal>
 
       <Box>

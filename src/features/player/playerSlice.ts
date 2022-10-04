@@ -3,7 +3,7 @@ import type { PayloadAction } from '@reduxjs/toolkit'
 import { initialData } from "../../utils/initialData"
 
 export interface PlayerInterface {
-    id: number
+    id: number | null
     name: string
     club: string,
     image?: string
@@ -17,13 +17,16 @@ const initialState: PlayerState = {
     mainArray: initialData
 }
 
+
 export const playerSlice = createSlice({
     name: 'player',
     initialState,
     reducers: {
-
+        addPlayer: (state, action: PayloadAction<PlayerInterface>) => {
+            state.mainArray.unshift(action.payload)
+        }
     }
 })
 
-export const { } = playerSlice.actions
+export const { addPlayer } = playerSlice.actions
 export default playerSlice.reducer
