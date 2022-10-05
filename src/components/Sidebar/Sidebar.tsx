@@ -3,6 +3,7 @@ import { Box, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Divide
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import CloseIcon from '@mui/icons-material/Close';
 import { useStyles } from './style';
+import { Link } from 'react-router-dom'
 
 interface Props {
   setShowSidebar: React.Dispatch<React.SetStateAction<boolean>>
@@ -13,16 +14,20 @@ const Sidebar: React.FC<Props> = ({ setShowSidebar }) => {
   const classes = useStyles()
 
   return (
-    <Box flex={1.25} bgcolor='pink'>
+    <Box flex={1.25} bgcolor='#f7f7f1'>
       <List sx={{ marginTop: 5 }}>
-        <ListItem disablePadding>
-          <ListItemButton>
-            <ListItemIcon>
-              ⭐️
-            </ListItemIcon>
-            <ListItemText primary="Champions League" />
-          </ListItemButton>
-        </ListItem>
+
+        <Link to='/champions'>
+          <ListItem disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                ⭐️
+              </ListItemIcon>
+              <ListItemText primary="Champions League" />
+            </ListItemButton>
+          </ListItem>
+        </Link>
+
         <ListItem disablePadding>
           <ListItemButton>
             <ListItemIcon>
