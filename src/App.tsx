@@ -3,8 +3,11 @@ import Navbar from './components/Navbar/Navbar'
 import { Stack, Typography } from '@mui/material'
 import Sidebar from './components/Sidebar/Sidebar'
 import Main from './components/Main/Main'
-import ChampionsLeague from './components/ChampionsLeague/ChampionsLeague'
 import { Routes, Route } from 'react-router-dom'
+import ChampionsLeague from './components/ChampionsLeague/ChampionsLeague'
+import EnglishLeague from './components/EnglishLeague/EnglishLeague'
+import SpanishLeague from './components/SpanishLeague/SpanishLeague'
+import ItalianLeague from './components/ItalianLeague/ItalianLeague'
 
 const App = () => {
   const [showSidebar, setShowSidebar] = useState(false)
@@ -12,7 +15,7 @@ const App = () => {
   return (
     <>
       <Navbar />
-      
+
       <Stack direction='row'>
         {showSidebar &&
           <Sidebar
@@ -21,10 +24,10 @@ const App = () => {
 
         <Routes>
           <Route path='/' element={<Main showSidebar={showSidebar} setShowSidebar={setShowSidebar} />} />
-          <Route path='/champions' element={<ChampionsLeague />} />
-          <Route path='/epl' />
-          <Route path='/laliga' />
-          <Route path='/seriea' />
+          <Route path='/champions' element={<ChampionsLeague showSidebar={showSidebar} setShowSidebar={setShowSidebar} />} />
+          <Route path='/epl' element={<EnglishLeague showSidebar={showSidebar} setShowSidebar={setShowSidebar} />} />
+          <Route path='/laliga' element={<SpanishLeague showSidebar={showSidebar} setShowSidebar={setShowSidebar} />} />
+          <Route path='/seriea' element={<ItalianLeague showSidebar={showSidebar} setShowSidebar={setShowSidebar} />} />
         </Routes>
       </Stack>
 

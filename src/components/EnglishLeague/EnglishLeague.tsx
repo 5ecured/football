@@ -8,10 +8,10 @@ interface Props {
   setShowSidebar: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-const ChampionsLeague: React.FC<Props> = ({ showSidebar, setShowSidebar }) => {
+const EnglishLeague: React.FC<Props> = ({ showSidebar, setShowSidebar }) => {
   return (
     <Box flex={5}>
-      Champsleague
+      epl
 
       {!showSidebar &&
         <Fab sx={{ position: 'fixed', bottom: 300, left: 20 }} onClick={() => setShowSidebar(true)}>
@@ -22,4 +22,4 @@ const ChampionsLeague: React.FC<Props> = ({ showSidebar, setShowSidebar }) => {
   )
 }
 
-export default ChampionsLeague
+export default EnglishLeague
