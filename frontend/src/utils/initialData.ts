@@ -61,7 +61,7 @@ export const initialData: playerInterface[] = [
     },
     {
         id: 8,
-        name: 'Eto',
+        name: 'Samuel Eto',
         club: 'Inter Milan',
         image: eto
     },
