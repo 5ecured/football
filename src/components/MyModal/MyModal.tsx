@@ -43,12 +43,9 @@ const Modal: React.FC<Props> = ({ setOpen }) => {
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        if (!player.name) {
-            triggerNameError()
-        }
-        if (!player.club) {
-            triggerClubError()
-        }
+        if (!player.name) triggerNameError()
+        
+        if (!player.club) triggerClubError()
 
         if (player.name && player.club) {
             dispatch(addPlayer(player))

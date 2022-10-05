@@ -6,9 +6,7 @@ import type { RootState } from '../../app/store'
 import { useSelector } from 'react-redux'
 import MyModal from '../MyModal/MyModal'
 import { PlayerInterface } from '../../features/player/playerSlice'
-
-// () => window.scrollTo({top: 0, left: 0, behavior: 'smooth'})
-
+import EditPlayer from '../EditPlayer/EditPlayer'
 
 const Main: React.FC = () => {
   const classes = useStyles()
@@ -19,16 +17,20 @@ const Main: React.FC = () => {
   const [playerToEdit, setPlayerToEdit] = useState<PlayerInterface>({ id: null, name: '', club: '' })
 
   const whichPlayerToEdit = (obj: PlayerInterface) => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
     setEditing(true)
     setPlayerToEdit(obj)
   }
 
-  console.log('playerToEdit', playerToEdit)
 
   return (
     <Container maxWidth='lg'>
       <Box className={classes.center} mt={5} mb={5}>
-        <Button variant='contained' onClick={() => setOpen(true)} className={classes.add}>Add player</Button>
+        {editing ? (
+          <EditPlayer playerToEdit={playerToEdit} setEditing={setEditing} />
+        ) : (
+          <Button variant='contained' onClick={() => setOpen(true)} className={classes.add}>Add player</Button>
+        )}
       </Box>
 
       <Modal
