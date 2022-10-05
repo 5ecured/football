@@ -4,6 +4,7 @@ I am constantly adding new features to this project. Currently this project only
 
 ## Tech stack
 
+- TypeScript
 - React
 - Material UI
 - Redux Toolkit
