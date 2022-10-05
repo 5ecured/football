@@ -48,7 +48,7 @@ const IndividualCard: React.FC<Props> = ({ display, whichPlayerToEdit }) => {
     )
   } else {
     return (
-      <Typography variant='h6'>No player. Click the button above to start adding some!</Typography>
+      <Typography sx={{marginTop: 5}} variant='h6'>No player. Click the button above to start adding some!</Typography>
     )
   }
 }

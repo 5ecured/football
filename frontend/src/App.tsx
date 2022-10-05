@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Navbar from './components/Navbar/Navbar'
-import { Stack, Typography } from '@mui/material'
+import { Box, Stack, Typography } from '@mui/material'
 import Sidebar from './components/Sidebar/Sidebar'
 import Main from './components/Main/Main'
 import { Routes, Route } from 'react-router-dom'
@@ -31,9 +31,11 @@ const App = () => {
         </Routes>
       </Stack>
 
-      <Typography variant='h6' textAlign='center' gutterBottom sx={{ marginTop: 5, padding: 2 }}>
-        Football Database 2022 ©
-      </Typography>
+      <Box bgcolor='#f7f7f1'>
+        <Typography variant='h6' textAlign='center' sx={{ marginTop: 5, padding: 2 }}>
+          Football Database 2022 ©
+        </Typography>
+      </Box>
     </>
   )
 }

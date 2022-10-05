@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Container, Button, Typography, Box, Grid, Modal } from '@mui/material'
+import { Container, Button, Typography, Box, Grid, Modal, TextField } from '@mui/material'
 import { useStyles } from './style'
 import IndividualCard from '../IndividualCard/IndividualCard'
 import type { RootState } from '../../app/store'
@@ -19,17 +19,25 @@ interface Props {
 
 const Main: React.FC<Props> = ({ showSidebar, setShowSidebar }) => {
   const classes = useStyles()
-  const display = useSelector((state: RootState) => state.player.mainArray)
+  const originalData = useSelector((state: RootState) => state.player.mainArray)
 
   const [open, setOpen] = useState<boolean>(false)
   const [editing, setEditing] = useState<boolean>(false)
   const [playerToEdit, setPlayerToEdit] = useState<PlayerInterface>({ id: null, name: '', club: '' })
+  const [filteredText, setFilteredText] = useState<string>('')
 
   const whichPlayerToEdit = (obj: PlayerInterface) => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
     setEditing(true)
     setPlayerToEdit(obj)
   }
+
+  let display = originalData.filter(player => {
+    return (
+      player.name.toLowerCase().includes(filteredText.toLowerCase()) ||
+      player.club.toLowerCase().includes(filteredText.toLowerCase())
+    )
+  })
 
 
   return (
@@ -39,8 +47,20 @@ const Main: React.FC<Props> = ({ showSidebar, setShowSidebar }) => {
           {editing ? (
             <EditPlayer playerToEdit={playerToEdit} setEditing={setEditing} />
           ) : (
-            <Button variant='contained' onClick={() => setOpen(true)} className={classes.add}>Add player</Button>
+            <Button sx={{ height: 55 }} variant='contained' onClick={() => setOpen(true)} className={classes.add}>Add player</Button>
           )}
+        </Box>
+
+        <Typography sx={{ marginBottom: 2 }} textAlign='center' variant='h6'>Filter by player name or club</Typography>
+        <Box className={classes.filter}>
+          <TextField
+            variant='outlined'
+            label='Filter by player name or club'
+            sx={{ width: '25%' }}
+            value={filteredText}
+            onChange={e => setFilteredText(e.target.value)}
+          />
+          <Button onClick={e => setFilteredText('')} variant='outlined' sx={{ height: 55, marginLeft: 5 }}>Clear filter</Button>
         </Box>
 
         <Modal

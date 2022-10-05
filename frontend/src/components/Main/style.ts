@@ -9,4 +9,10 @@ export const useStyles = makeStyles({
     add: {
         width: '300px'
     },
+    filter: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginBottom: '20px'
+    },
 })
