@@ -8,5 +8,5 @@ export const useStyles = makeStyles({
     },
     add: {
         width: '300px'
-    }
+    },
 })

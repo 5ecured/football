@@ -2,8 +2,8 @@ import { makeStyles } from "@mui/styles"
 
 export const useStyles = makeStyles({
     image: {
-        height: '300px',
-        width: '300px',
+        height: '275px',
+        width: '275px',
     },
     center: {
         display: 'flex',

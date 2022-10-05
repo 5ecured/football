@@ -25,6 +25,8 @@ const Modal: React.FC<Props> = ({ setOpen }) => {
         setSelectedFile(e.target.files![0])
     }
 
+    console.log('player.id', player.id)
+
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setPlayer({ ...player, [e.target.name]: e.target.value })
     }
@@ -44,7 +46,7 @@ const Modal: React.FC<Props> = ({ setOpen }) => {
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         if (!player.name) triggerNameError()
-        
+
         if (!player.club) triggerClubError()
 
         if (player.name && player.club) {

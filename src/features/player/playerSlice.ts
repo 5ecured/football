@@ -23,6 +23,7 @@ export const playerSlice = createSlice({
     initialState,
     reducers: {
         addPlayer: (state, action: PayloadAction<PlayerInterface>) => {
+            action.payload.id = state.mainArray.length + 1
             state.mainArray.unshift(action.payload)
         },
         deletePlayer: (state, action: PayloadAction<number | null>) => {

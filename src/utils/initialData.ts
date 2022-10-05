@@ -4,6 +4,9 @@ import drogba from '../asset/drogba.png'
 import kroos from '../asset/kroos.jpg'
 import lewandowski from '../asset/lewandowski.jpg'
 import kaka from '../asset/kaka.jpg'
+import torres from '../asset/torres.jpg'
+import eto from '../asset/eto.jpg'
+import maguire from '../asset/maguire.jpeg'
 
 
 interface playerInterface {
@@ -49,5 +52,23 @@ export const initialData: playerInterface[] = [
         name: 'Kaka',
         club: 'AC Milan',
         image: kaka
+    },
+    {
+        id: 7,
+        name: 'Fernando Torres',
+        club: 'Liverpool',
+        image: torres
+    },
+    {
+        id: 8,
+        name: 'Eto',
+        club: 'Inter Milan',
+        image: eto
+    },
+    {
+        id: 9,
+        name: 'Harry Maguire',
+        club: 'Manchester United',
+        image: maguire
     }
 ]

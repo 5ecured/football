@@ -56,7 +56,7 @@ const EditPlayer: React.FC<Props> = ({ playerToEdit, setEditing }) => {
     return (
         <form onSubmit={handleSubmit}>
             <Box>
-                <Typography textAlign='center' variant='h6'>
+                <Typography textAlign='center' variant='h5'>
                     Edit a player
                 </Typography>
                 <Box className={classes.center} sx={{ marginTop: '15px' }}>
@@ -80,11 +80,10 @@ const EditPlayer: React.FC<Props> = ({ playerToEdit, setEditing }) => {
                 <Box className={classes.error}>
                     {isNameEmpty ? <Typography color='error'>Please enter a name</Typography> : <Typography></Typography>}
                     {isClubEmpty ? <Typography color='error'>Please enter a club</Typography> : <Typography></Typography>}
-                    {/* <Typography>a</Typography>
-                    <Typography>b</Typography> */}
                 </Box>
                 <Box className={classes.center} sx={{ marginTop: '30px' }}>
                     <Button type='submit' variant='contained'>Edit</Button>
+                    <Button variant='outlined' onClick={() => setEditing(false)}>Cancel</Button>
                 </Box>
             </Box>
         </form>
