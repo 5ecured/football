@@ -9,3 +9,8 @@ I am constantly adding new features to this project. Currently this project only
 - Material UI
 - Redux Toolkit
 - React Router
+- Rapid API
+
+## TODO
+
+- Add backend

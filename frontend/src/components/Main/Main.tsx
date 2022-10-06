@@ -89,7 +89,7 @@ const Main: React.FC<Props> = ({ showSidebar, setShowSidebar }) => {
         </Box>
 
         {!showSidebar &&
-          <Fab sx={{ position: 'fixed', bottom: 300, left: 20 }} onClick={() => setShowSidebar(true)}>
+          <Fab sx={{ position: 'fixed', bottom: '50%', left: 20 }} onClick={() => setShowSidebar(true)}>
             <ArrowForwardIcon />
           </Fab>
         }
