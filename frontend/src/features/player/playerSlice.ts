@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit"
+import { createSlice, current } from "@reduxjs/toolkit"
 import type { PayloadAction } from '@reduxjs/toolkit'
 import { initialData } from "../../utils/initialData"
 
@@ -6,7 +6,8 @@ export interface PlayerInterface {
     id: number | null
     name: string
     club: string,
-    image?: string
+    image?: string,
+    important: boolean
 }
 
 export interface PlayerState {
@@ -35,9 +36,15 @@ export const playerSlice = createSlice({
             const id = action.payload[1]
             const temp = state.mainArray.map(player => player.id === id ? obj : player)
             state.mainArray = temp
+        },
+        toggleFavourite: (state, action: PayloadAction<number | null>) => {
+            const playerToToggle: any = state.mainArray.find(player => player.id === action.payload)
+            playerToToggle.important = !(playerToToggle.important)
+            const temp = state.mainArray.map(player => player.id === action.payload ? playerToToggle : player)
+            state.mainArray = temp
         }
     }
 })
 
-export const { addPlayer, deletePlayer, editPlayer } = playerSlice.actions
+export const { addPlayer, deletePlayer, editPlayer, toggleFavourite } = playerSlice.actions
 export default playerSlice.reducer

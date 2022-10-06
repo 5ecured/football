@@ -17,7 +17,7 @@ const Modal: React.FC<Props> = ({ setOpen }) => {
 
 
     const [selectedFile, setSelectedFile] = useState<object | undefined>(undefined)
-    const [player, setPlayer] = useState<PlayerInterface>({ id: null, name: '', club: '' })
+    const [player, setPlayer] = useState<PlayerInterface>({ id: null, name: '', club: '', important: false })
     const [isNameEmpty, setIsNameEmpty] = useState<boolean>(false)
     const [isClubEmpty, setIsClubEmpty] = useState<boolean>(false)
 

@@ -5,7 +5,8 @@ import { useStyles } from './style'
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import { useDispatch } from 'react-redux'
-import { deletePlayer } from '../../features/player/playerSlice'
+import { deletePlayer, toggleFavourite } from '../../features/player/playerSlice'
+import GradeIcon from '@mui/icons-material/Grade';
 
 interface Props {
   display: PlayerInterface[]
@@ -15,6 +16,7 @@ interface Props {
 const IndividualCard: React.FC<Props> = ({ display, whichPlayerToEdit }) => {
   const classes = useStyles()
   const dispatch = useDispatch()
+
 
   const render = display.map((player, i) => (
     <Grid item xs={12} lg={4} className={classes.center} mt={5} key={i}>
@@ -32,13 +34,17 @@ const IndividualCard: React.FC<Props> = ({ display, whichPlayerToEdit }) => {
         </CardContent>
         <CardActions className={classes.cardActions}>
           <Box mb={2}>
-            <Button variant='contained' onClick={() => whichPlayerToEdit(player)}><EditIcon /></Button>
+            <Button variant='outlined' onClick={() => whichPlayerToEdit(player)}><EditIcon /></Button>
             <Button variant='outlined' onClick={() => dispatch(deletePlayer(player.id))}><DeleteIcon /></Button>
+            <Button variant={`${player.important ? 'contained' : 'outlined'}`} onClick={() => dispatch(toggleFavourite(player.id))}><GradeIcon /></Button>
           </Box>
         </CardActions>
       </Card>
     </Grid>
   ))
+
+
+
 
   if (display.length > 0) {
     return (
@@ -48,7 +54,7 @@ const IndividualCard: React.FC<Props> = ({ display, whichPlayerToEdit }) => {
     )
   } else {
     return (
-      <Typography sx={{marginTop: 5}} variant='h6'>No player. Click the button above to start adding some!</Typography>
+      <Typography sx={{ marginTop: 5 }} variant='h6'>No player. Click the button above to start adding some!</Typography>
     )
   }
 }

@@ -28,8 +28,8 @@ const ChampionsLeague: React.FC<Props> = ({ showSidebar, setShowSidebar }) => {
   // console.log('data', data)
 
 
-  
-  fetchChampionsLeague()
+
+  // fetchChampionsLeague()
 
   return (
     <Box flex={5}>

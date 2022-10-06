@@ -23,7 +23,7 @@ const Main: React.FC<Props> = ({ showSidebar, setShowSidebar }) => {
 
   const [open, setOpen] = useState<boolean>(false)
   const [editing, setEditing] = useState<boolean>(false)
-  const [playerToEdit, setPlayerToEdit] = useState<PlayerInterface>({ id: null, name: '', club: '' })
+  const [playerToEdit, setPlayerToEdit] = useState<PlayerInterface>({ id: null, name: '', club: '', important: false })
   const [filteredText, setFilteredText] = useState<string>('')
 
   const whichPlayerToEdit = (obj: PlayerInterface) => {
