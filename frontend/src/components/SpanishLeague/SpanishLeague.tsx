@@ -18,8 +18,8 @@ const SpanishLeague: React.FC<Props> = ({ showSidebar, setShowSidebar }) => {
     <Box flex={5}>
       <Container maxWidth='lg'>
         <Box className={classes.center}>
-          <a href='https://www.laliga.com/en-GB' target='_blank'>
-            <img src={laliga} className={classes.image} />
+          <a href='https://www.laliga.com/en-GB' target='_blank' rel="noreferrer">
+            <img src={laliga} className={classes.image} alt='La Liga' />
           </a>
         </Box>
 

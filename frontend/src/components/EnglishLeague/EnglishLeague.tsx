@@ -18,8 +18,8 @@ const EnglishLeague: React.FC<Props> = ({ showSidebar, setShowSidebar }) => {
     <Box flex={5}>
       <Container maxWidth='lg'>
         <Box className={classes.center}>
-          <a href='https://www.premierleague.com/' target='_blank' >
-            <img src={premierleague} className={classes.image} />
+          <a href='https://www.premierleague.com/' target='_blank' rel="noreferrer">
+            <img src={premierleague} className={classes.image} alt='English Premier League' />
           </a>
         </Box>
 

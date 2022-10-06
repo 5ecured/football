@@ -19,7 +19,7 @@ const Sidebar: React.FC<Props> = ({ setShowSidebar }) => {
 
         <Link to='/champions' style={{ textDecoration: 'none' }}>
           <ListItem disablePadding>
-            <ListItemButton>
+            <ListItemButton onClick={() => setShowSidebar(false)}>
               <ListItemIcon>
                 ⭐️
               </ListItemIcon>
@@ -30,7 +30,7 @@ const Sidebar: React.FC<Props> = ({ setShowSidebar }) => {
 
         <Link to='/epl' style={{ textDecoration: 'none' }}>
           <ListItem disablePadding>
-            <ListItemButton>
+            <ListItemButton onClick={() => setShowSidebar(false)}>
               <ListItemIcon>
                 🏴󠁧󠁢󠁥󠁮󠁧󠁿
               </ListItemIcon>
@@ -41,7 +41,7 @@ const Sidebar: React.FC<Props> = ({ setShowSidebar }) => {
 
         <Link to='/laliga' style={{ textDecoration: 'none' }}>
           <ListItem disablePadding>
-            <ListItemButton>
+            <ListItemButton onClick={() => setShowSidebar(false)}>
               <ListItemIcon>
                 🇪🇸
               </ListItemIcon>
@@ -52,7 +52,7 @@ const Sidebar: React.FC<Props> = ({ setShowSidebar }) => {
 
         <Link to='/seriea' style={{ textDecoration: 'none' }}>
           <ListItem disablePadding>
-            <ListItemButton>
+            <ListItemButton onClick={() => setShowSidebar(false)}>
               <ListItemIcon>
                 🇮🇹
               </ListItemIcon>

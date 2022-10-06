@@ -18,8 +18,8 @@ const ItalianLeague: React.FC<Props> = ({ showSidebar, setShowSidebar }) => {
     <Box flex={5}>
       <Container maxWidth='lg'>
         <Box className={classes.center}>
-          <a href='https://www.legaseriea.it/en' target='_blank'>
-            <img src={seriea} className={classes.image} />
+          <a href='https://www.legaseriea.it/en' target='_blank' rel="noreferrer">
+            <img src={seriea} className={classes.image} alt='Serie A' />
           </a>
         </Box>
 
