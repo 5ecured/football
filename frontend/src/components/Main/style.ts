@@ -9,14 +9,10 @@ export const useStyles = makeStyles({
     add: {
         width: '300px'
     },
-    filter: {
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
     filterAndFavorite: {
         display: 'flex',
         justifyContent: 'space-around',
-        alignItems: 'center'
+        alignItems: 'center',
+        marginBottom: '20px'
     }
 })

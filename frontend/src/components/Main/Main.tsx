@@ -25,6 +25,7 @@ const Main: React.FC<Props> = ({ showSidebar, setShowSidebar }) => {
   const [editing, setEditing] = useState<boolean>(false)
   const [playerToEdit, setPlayerToEdit] = useState<PlayerInterface>({ id: null, name: '', club: '', important: false })
   const [filteredText, setFilteredText] = useState<string>('')
+  const [showFavorite, setShowFavorite] = useState<boolean>(false)
 
   const whichPlayerToEdit = (obj: PlayerInterface) => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
@@ -39,6 +40,7 @@ const Main: React.FC<Props> = ({ showSidebar, setShowSidebar }) => {
     )
   })
 
+  let playersToDisplay = showFavorite ? display.filter(player => player.important) : display
 
   return (
     <Box flex={5}>
@@ -52,13 +54,8 @@ const Main: React.FC<Props> = ({ showSidebar, setShowSidebar }) => {
         </Box>
 
 
-
-
-
         <Box className={classes.filterAndFavorite}>
-          {/* <Box> */}
-          {/* <Typography sx={{ marginBottom: 2 }} textAlign='center' variant='h6'>Filter by player name or club</Typography> */}
-          <Box className={classes.filter}>
+          <Box className={classes.center}>
             <TextField
               variant='outlined'
               label='Filter by player name or club'
@@ -68,15 +65,11 @@ const Main: React.FC<Props> = ({ showSidebar, setShowSidebar }) => {
             />
             <Button onClick={e => setFilteredText('')} variant='outlined' sx={{ height: 55, marginLeft: 2, width: 100 }}>Clear</Button>
           </Box>
-          {/* </Box> */}
 
           <Box>
-            <Button variant='outlined' sx={{ height: 55, marginLeft: 5 }}>Show favorite players</Button>
+            <Button onClick={() => setShowFavorite(!showFavorite)} variant='outlined' sx={{ height: 55, marginLeft: 5 }}>Showing {showFavorite ? 'favorite' : 'all'} players</Button>
           </Box>
         </Box>
-
-
-
 
 
         <Modal
@@ -91,7 +84,7 @@ const Main: React.FC<Props> = ({ showSidebar, setShowSidebar }) => {
 
         <Box>
           <Grid container spacing={3} className={classes.center}>
-            <IndividualCard display={display} whichPlayerToEdit={whichPlayerToEdit} />
+            <IndividualCard playersToDisplay={playersToDisplay} whichPlayerToEdit={whichPlayerToEdit} />
           </Grid>
         </Box>
 

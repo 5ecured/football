@@ -9,16 +9,16 @@ import { deletePlayer, toggleFavourite } from '../../features/player/playerSlice
 import GradeIcon from '@mui/icons-material/Grade';
 
 interface Props {
-  display: PlayerInterface[]
+  playersToDisplay: PlayerInterface[]
   whichPlayerToEdit: (obj: PlayerInterface) => void
 }
 
-const IndividualCard: React.FC<Props> = ({ display, whichPlayerToEdit }) => {
+const IndividualCard: React.FC<Props> = ({ playersToDisplay, whichPlayerToEdit }) => {
   const classes = useStyles()
   const dispatch = useDispatch()
 
 
-  const render = display.map((player, i) => (
+  const render = playersToDisplay.map((player, i) => (
     <Grid item xs={12} lg={4} className={classes.center} mt={5} key={i}>
       <Card>
         <CardMedia
@@ -46,7 +46,7 @@ const IndividualCard: React.FC<Props> = ({ display, whichPlayerToEdit }) => {
 
 
 
-  if (display.length > 0) {
+  if (playersToDisplay.length > 0) {
     return (
       <>
         {render}
