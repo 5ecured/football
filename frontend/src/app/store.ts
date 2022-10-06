@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import playerReducer from '../features/player/playerSlice'
+import championsLeagueReducer from '../features/championsLeague/championsLeagueSlice'
 
 export const store = configureStore({
     reducer: {
-        player: playerReducer
+        player: playerReducer,
+        championsLeague: championsLeagueReducer
     }
 })
 

@@ -13,7 +13,7 @@ const initialState: ChampionsLeagueInterface = {
     loading: false
 }
 
-const fetchData = createAsyncThunk(
+export const fetchData = createAsyncThunk(
     'championsLeague/fetchData',
     async (_, thunkAPI) => {
         try {
