@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const options = {
+export const options = {
     method: 'GET',
     url: 'https://football98.p.rapidapi.com/championsleague/results',
     headers: {
