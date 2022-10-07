@@ -4,7 +4,12 @@ import { useStyles } from './style'
 import SportsSoccerIcon from '@mui/icons-material/SportsSoccer';
 import { Link } from 'react-router-dom'
 
-const Navbar: React.FC = () => {
+interface Props {
+    setShowSidebar: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+
+const Navbar: React.FC<Props> = ({ setShowSidebar }) => {
     const classes = useStyles()
 
 
@@ -13,7 +18,7 @@ const Navbar: React.FC = () => {
     return (
         <AppBar position='sticky'>
             <Toolbar className={classes.center}>
-                <Link to='/' style={{ textDecoration: 'none' }}>
+                <Link to='/' style={{ textDecoration: 'none' }} onClick={() => setShowSidebar(false)}>
                     <Typography variant='h4' color='white'>
                         <SportsSoccerIcon />
                         {' '}

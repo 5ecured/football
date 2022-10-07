@@ -14,7 +14,7 @@ const App = () => {
 
   return (
     <>
-      <Navbar />
+      <Navbar setShowSidebar={setShowSidebar} />
 
       <Stack direction='row'>
         {showSidebar &&

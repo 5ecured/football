@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
 import type { PayloadAction } from '@reduxjs/toolkit'
-import { options } from "../../utils/fetchChampionsLeague"
+import { options } from "../../utils/championsLeagueFetchOptions"
 import axios from 'axios'
 
 export interface ChampionsLeagueInterface {
@@ -18,7 +18,22 @@ export const fetchData = createAsyncThunk(
     async (_, thunkAPI) => {
         try {
             const { data } = await axios.request(options)
-            const dataInObject = data[0]
+            const dataInObject = data[0] //based on the API, data[0] seems to return the latest matchday
+
+            /**
+             * Now inside dataInObject, we have:
+             *          KEY                     VALUE
+             * Group stage: Matchday 3: [{..}, {..}, {..}, etc.] //this VALUE is what latestMatchday contains
+             * Group stage: Matchday 2: [{..}, {..}, {..}, etc.]
+             * Group stage: Matchday 1: [{..}, {..}, {..}, etc.]
+             * 
+             * Below, Object.values() returns just the values of an object, in an array. Then we use [0] to get first element
+             * [0] used below basically is the same as       dataInObject["Group stage: Matchday 3"]. Its just easier to use [0]
+             * 
+             * 
+             */
+
+
             const latestMatchday = Object.values(dataInObject)[0]
             return latestMatchday
         } catch (error) {

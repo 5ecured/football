@@ -1,14 +1,14 @@
-import { Box, Container } from '@mui/material'
+import { Box, Container, Grid, Typography } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import Fab from '@mui/material/Fab';
 import championsleague from '../../asset/championsleague.jpg'
 import { useStyles } from './style'
-import { fetchChampionsLeague } from '../../utils/fetchChampionsLeague'
 import { fetchData } from '../../features/championsLeague/championsLeagueSlice'
 import { useSelector } from 'react-redux'
 import { AppDispatch, RootState } from '../../app/store'
 import { useDispatch } from 'react-redux'
+import DisplayChampionsLeagueMatches from '../DisplayChampionsLeagueMatches/DisplayChampionsLeagueMatches'
 
 
 interface Props {
@@ -18,18 +18,15 @@ interface Props {
 
 const ChampionsLeague: React.FC<Props> = ({ showSidebar, setShowSidebar }) => {
   const classes = useStyles()
-  // const data = useSelector((state: RootState) => state.championsLeague.data)
-  // const dispatch = useDispatch<AppDispatch>()
+  const data = useSelector((state: RootState) => state.championsLeague.data)
+  const dispatch = useDispatch<AppDispatch>()
 
-  // useEffect(() => {
-  //   dispatch(fetchData())
-  // }, [])
-
-  // console.log('data', data)
+  useEffect(() => {
+    dispatch(fetchData())
+  }, [])
 
 
 
-  // fetchChampionsLeague()
 
   return (
     <Box flex={5}>
@@ -40,10 +37,14 @@ const ChampionsLeague: React.FC<Props> = ({ showSidebar, setShowSidebar }) => {
           </a>
         </Box>
 
+        <Typography sx={{ marginBottom: 10 }} textAlign='center' variant='h4'>Latest Champions League results</Typography>
+        <Grid container>
+          <DisplayChampionsLeagueMatches data={data} />
+        </Grid>
 
 
         {!showSidebar &&
-          <Fab sx={{ position: 'fixed', bottom: 300, left: 20 }} onClick={() => setShowSidebar(true)}>
+          <Fab sx={{ position: 'fixed', bottom: '50%', left: 20 }} onClick={() => setShowSidebar(true)}>
             <ArrowForwardIcon />
           </Fab>
         }
