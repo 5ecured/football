@@ -1,5 +1,5 @@
 import { Box, Container, Grid, Typography, CircularProgress } from '@mui/material'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import Fab from '@mui/material/Fab';
 import championsleague from '../../asset/championsleague.jpg'
@@ -37,7 +37,7 @@ const ChampionsLeague: React.FC<Props> = ({ showSidebar, setShowSidebar }) => {
           </a>
         </Box>
 
-        <Typography sx={{ marginBottom: 3 }} textAlign='center' variant='h5'>Latest Champions League results</Typography>
+        <Typography sx={{ marginBottom: 3 }} textAlign='center' variant='h5'>Most recent Champions League match</Typography>
         <Typography sx={{ marginBottom: 3 }} textAlign='center' variant='h4'>{matchday}</Typography>
         {loading ?
           (<Box className={classes.center}>
