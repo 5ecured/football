@@ -18,7 +18,7 @@ interface Props {
 
 const ChampionsLeague: React.FC<Props> = ({ showSidebar, setShowSidebar }) => {
   const classes = useStyles()
-  const { data, matchday, loading } = useSelector((state: RootState) => state.championsLeague)
+  const { matchday, loading } = useSelector((state: RootState) => state.championsLeague)
   const dispatch = useDispatch<AppDispatch>()
 
   useEffect(() => {
@@ -45,7 +45,7 @@ const ChampionsLeague: React.FC<Props> = ({ showSidebar, setShowSidebar }) => {
           </Box>)
           :
           <Grid container>
-            <DisplayChampionsLeagueMatches data={data} />
+            <DisplayChampionsLeagueMatches />
           </Grid>
         }
 

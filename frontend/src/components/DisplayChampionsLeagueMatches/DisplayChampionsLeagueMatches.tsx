@@ -1,13 +1,12 @@
 import { Box, Grid, Typography } from '@mui/material'
 import React from 'react'
 import { useStyles } from './style'
+import { useSelector } from 'react-redux'
+import { RootState } from '../../app/store'
 
-interface Props {
-    data: any[]
-}
-
-const DisplayChampionsLeagueMatches: React.FC<Props> = ({ data }) => {
+const DisplayChampionsLeagueMatches: React.FC = () => {
     const classes = useStyles()
+    const data = useSelector((state: RootState) => state.championsLeague.data)
 
     const render = data.map((matchday, i) => (
         <>
