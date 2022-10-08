@@ -14,3 +14,4 @@ I am constantly adding new features to this project. Currently this project only
 ## TODO
 
 - Add backend
+- Enable image upload in frontend
