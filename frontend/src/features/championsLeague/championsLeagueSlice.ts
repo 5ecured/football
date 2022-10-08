@@ -4,11 +4,13 @@ import { options } from "../../utils/championsLeagueFetchOptions"
 import axios from 'axios'
 
 export interface ChampionsLeagueInterface {
+    matchday: string
     data: any[]
     loading: boolean
 }
 
 const initialState: ChampionsLeagueInterface = {
+    matchday: '',
     data: [],
     loading: false
 }
@@ -33,9 +35,10 @@ export const fetchData = createAsyncThunk(
              * 
              */
 
-
+            const whichMatchday = Object.keys(dataInObject)[0] //To say "matchday 3, 4, 5 or so"
             const latestMatchday = Object.values(dataInObject)[0]
-            return latestMatchday
+
+            return [whichMatchday, latestMatchday] //Must return in an array/object as action.payload only accepts 1 argument
         } catch (error) {
             return thunkAPI.rejectWithValue(error)
         }
@@ -55,7 +58,8 @@ export const championsLeagueSlice = createSlice({
             state.loading = true
         })
         builder.addCase(fetchData.fulfilled, (state, action: PayloadAction<unknown | any>) => {
-            state.data = action.payload
+            state.matchday = action.payload[0]
+            state.data = action.payload[1]
             state.loading = false
         })
         builder.addCase(fetchData.rejected, (state, action) => {

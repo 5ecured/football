@@ -1,4 +1,4 @@
-import { Box, Container, Grid, Typography } from '@mui/material'
+import { Box, Container, Grid, Typography, CircularProgress } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import Fab from '@mui/material/Fab';
@@ -18,7 +18,7 @@ interface Props {
 
 const ChampionsLeague: React.FC<Props> = ({ showSidebar, setShowSidebar }) => {
   const classes = useStyles()
-  const data = useSelector((state: RootState) => state.championsLeague.data)
+  const { data, matchday, loading } = useSelector((state: RootState) => state.championsLeague)
   const dispatch = useDispatch<AppDispatch>()
 
   useEffect(() => {
@@ -37,11 +37,17 @@ const ChampionsLeague: React.FC<Props> = ({ showSidebar, setShowSidebar }) => {
           </a>
         </Box>
 
-        <Typography sx={{ marginBottom: 10 }} textAlign='center' variant='h4'>Latest Champions League results</Typography>
-        <Grid container>
-          <DisplayChampionsLeagueMatches data={data} />
-        </Grid>
-
+        <Typography sx={{ marginBottom: 3 }} textAlign='center' variant='h5'>Latest Champions League results</Typography>
+        <Typography sx={{ marginBottom: 3 }} textAlign='center' variant='h4'>{matchday}</Typography>
+        {loading ?
+          (<Box className={classes.center}>
+            <CircularProgress />
+          </Box>)
+          :
+          <Grid container>
+            <DisplayChampionsLeagueMatches data={data} />
+          </Grid>
+        }
 
         {!showSidebar &&
           <Fab sx={{ position: 'fixed', bottom: '50%', left: 20 }} onClick={() => setShowSidebar(true)}>
