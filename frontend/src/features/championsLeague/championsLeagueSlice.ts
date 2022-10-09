@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
 import type { PayloadAction } from '@reduxjs/toolkit'
-import { championsLeagueOptions } from "../../utils/championsLeagueFetchOptions"
+import { championsLeagueOptions } from "../../utils/functions"
 import axios from 'axios'
 
 export interface ChampionsLeagueInterface {

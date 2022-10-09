@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import { Container, Button, Typography, Box, Grid, Modal, TextField } from '@mui/material'
 import { useStyles } from './style'
-import IndividualCard from '../IndividualCard/IndividualCard'
+import IndividualCard from '../../components/IndividualCard/IndividualCard'
 import type { RootState } from '../../app/store'
 import { useSelector } from 'react-redux'
-import MyModal from '../MyModal/MyModal'
+import MyModal from '../../components/MyModal/MyModal'
 import { PlayerInterface } from '../../features/player/playerSlice'
-import EditPlayer from '../EditPlayer/EditPlayer'
+import EditPlayer from '../../components/EditPlayer/EditPlayer'
 import Fab from '@mui/material/Fab';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';

@@ -2,12 +2,12 @@ import React, { useState } from 'react'
 import Navbar from './components/Navbar/Navbar'
 import { Box, Stack, Typography } from '@mui/material'
 import Sidebar from './components/Sidebar/Sidebar'
-import Main from './components/Main/Main'
+import Main from './pages/Main/Main'
 import { Routes, Route } from 'react-router-dom'
-import ChampionsLeague from './components/ChampionsLeague/ChampionsLeague'
-import EnglishLeague from './components/EnglishLeague/EnglishLeague'
-import SpanishLeague from './components/SpanishLeague/SpanishLeague'
-import ItalianLeague from './components/ItalianLeague/ItalianLeague'
+import ChampionsLeague from './pages/ChampionsLeague/ChampionsLeague'
+import EnglishLeague from './pages/EnglishLeague/EnglishLeague'
+import SpanishLeague from './pages/SpanishLeague/SpanishLeague'
+import ItalianLeague from './pages/ItalianLeague/ItalianLeague'
 
 const App = () => {
   const [showSidebar, setShowSidebar] = useState(false)

@@ -1,25 +1,25 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
-import axios from "axios"
-import type { PayloadAction } from "@reduxjs/toolkit"
-import { englishPremierLeagueOptions } from "../../utils/functions"
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
+import type { PayloadAction } from '@reduxjs/toolkit'
+import { spanishLeagueOptions } from "../../utils/functions"
+import axios from 'axios'
 
-export interface EnglishPremierLeagueInterface {
+export interface SpanishLeagueInterface {
     matchday: string
-    data: any[],
+    data: any[]
     loading: boolean
 }
 
-const initialState: EnglishPremierLeagueInterface = {
+const initialState: SpanishLeagueInterface = {
     matchday: '',
     data: [],
     loading: false
 }
 
 export const fetchData = createAsyncThunk(
-    'englishPremierLeague/fetchData',
+    'spanishLeague/fetchData',
     async (_, thunkAPI) => {
         try {
-            const { data } = await axios.request(englishPremierLeagueOptions)
+            const { data } = await axios.request(spanishLeagueOptions)
             const dataInObject = data[0]
 
             const whichMatchday = Object.keys(dataInObject)[0]
@@ -32,8 +32,8 @@ export const fetchData = createAsyncThunk(
     }
 )
 
-export const englishPremierLeagueSlice = createSlice({
-    name: 'englishPremierLeague',
+export const spanishLeagueSlice = createSlice({
+    name: 'spanishLeague',
     initialState,
     reducers: {
 
@@ -53,5 +53,5 @@ export const englishPremierLeagueSlice = createSlice({
     }
 })
 
-export const { } = englishPremierLeagueSlice.actions
-export default englishPremierLeagueSlice.reducer
+export const { } = spanishLeagueSlice.actions
+export default spanishLeagueSlice.reducer

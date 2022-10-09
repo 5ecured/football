@@ -7,7 +7,7 @@ import { useStyles } from './style'
 import { AppDispatch, RootState } from '../../app/store'
 import { useSelector, useDispatch } from 'react-redux'
 import { fetchData } from '../../features/englishPremierLeague/englishPremierLeagueSlice'
-import DisplayEnglishPremierLeagueMatches from '../DisplayEnglishPremierLeagueMatches/DisplayEnglishPremierLeagueMatches'
+import DisplayEnglishPremierLeagueMatches from '../../components/DisplayEnglishPremierLeagueMatches/DisplayEnglishPremierLeagueMatches'
 
 
 

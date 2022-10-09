@@ -5,10 +5,9 @@ import Fab from '@mui/material/Fab';
 import championsleague from '../../asset/championsleague.jpg'
 import { useStyles } from './style'
 import { fetchData } from '../../features/championsLeague/championsLeagueSlice'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { AppDispatch, RootState } from '../../app/store'
-import { useDispatch } from 'react-redux'
-import DisplayChampionsLeagueMatches from '../DisplayChampionsLeagueMatches/DisplayChampionsLeagueMatches'
+import DisplayChampionsLeagueMatches from '../../components/DisplayChampionsLeagueMatches/DisplayChampionsLeagueMatches'
 
 
 interface Props {
