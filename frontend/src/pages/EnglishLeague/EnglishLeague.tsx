@@ -36,7 +36,7 @@ const EnglishLeague: React.FC<Props> = ({ showSidebar, setShowSidebar }) => {
         </Box>
 
 
-        <Typography sx={{ marginBottom: 3, marginTop: 5 }} textAlign='center' variant='h5'>Most recent English Premier League match</Typography>
+        <Typography sx={{ marginBottom: 3, marginTop: 5 }} textAlign='center' variant='h5'>Most recent English Premier League matches</Typography>
         <Typography sx={{ marginBottom: 3 }} textAlign='center' variant='h4'>{matchday}</Typography>
         {loading ?
           (<Box className={classes.center}>

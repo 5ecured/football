@@ -37,7 +37,7 @@ const SpanishLeague: React.FC<Props> = ({ showSidebar, setShowSidebar }) => {
 
 
 
-        <Typography sx={{ marginBottom: 3, marginTop: 5 }} textAlign='center' variant='h5'>Most recent La Liga match</Typography>
+        <Typography sx={{ marginBottom: 3, marginTop: 5 }} textAlign='center' variant='h5'>Most recent La Liga matches</Typography>
         <Typography sx={{ marginBottom: 3 }} textAlign='center' variant='h4'>{matchday}</Typography>
         {loading ?
           (<Box className={classes.center}>

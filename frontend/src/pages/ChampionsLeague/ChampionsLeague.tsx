@@ -36,7 +36,7 @@ const ChampionsLeague: React.FC<Props> = ({ showSidebar, setShowSidebar }) => {
           </a>
         </Box>
 
-        <Typography sx={{ marginBottom: 3 }} textAlign='center' variant='h5'>Most recent Champions League match</Typography>
+        <Typography sx={{ marginBottom: 3 }} textAlign='center' variant='h5'>Most recent Champions League matches</Typography>
         <Typography sx={{ marginBottom: 3 }} textAlign='center' variant='h4'>{matchday}</Typography>
         {loading ?
           (<Box className={classes.center}>

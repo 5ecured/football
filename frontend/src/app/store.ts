@@ -3,13 +3,15 @@ import playerReducer from '../features/player/playerSlice'
 import championsLeagueReducer from '../features/championsLeague/championsLeagueSlice'
 import englishPremierLeagueReducer from '../features/englishPremierLeague/englishPremierLeagueSlice'
 import spanishLeagueReducer from '../features/spanishLeague/spanishLeagueSlice'
+import italianLeagueReducer from '../features/italianLeague/italianLeagueSlice'
 
 export const store = configureStore({
     reducer: {
         player: playerReducer,
         championsLeague: championsLeagueReducer,
         englishPremierLeague: englishPremierLeagueReducer,
-        spanishLeague: spanishLeagueReducer
+        spanishLeague: spanishLeagueReducer,
+        italianLeague: italianLeagueReducer
     }
 })
 

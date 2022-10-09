@@ -30,3 +30,12 @@ export const spanishLeagueOptions = {
         'X-RapidAPI-Host': 'football98.p.rapidapi.com'
     }
 };
+
+export const italianLeagueOptions = {
+    method: 'GET',
+    url: 'https://football98.p.rapidapi.com/seriea/results',
+    headers: {
+        'X-RapidAPI-Key': process.env.REACT_APP_RAPID,
+        'X-RapidAPI-Host': 'football98.p.rapidapi.com'
+    }
+};
