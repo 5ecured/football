@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
 import type { PayloadAction } from '@reduxjs/toolkit'
-import { options } from "../../utils/championsLeagueFetchOptions"
+import { championsLeagueOptions } from "../../utils/championsLeagueFetchOptions"
 import axios from 'axios'
 
 export interface ChampionsLeagueInterface {
@@ -19,13 +19,13 @@ export const fetchData = createAsyncThunk(
     'championsLeague/fetchData',
     async (_, thunkAPI) => {
         try {
-            const { data } = await axios.request(options)
-            const dataInObject = data[0] //based on the API, data[0] seems to return the latest matchday
+            const { data } = await axios.request(championsLeagueOptions)
+            const dataInObject = data[0]
 
             /**
              * Now inside dataInObject, we have:
              *          KEY                     VALUE
-             * Group stage: Matchday 3: [{..}, {..}, {..}, etc.] //this VALUE is what latestMatchday contains
+             * Group stage: Matchday 3: [{..}, {..}, {..}, etc.] //this VALUE is what latestMatchday below contains
              * Group stage: Matchday 2: [{..}, {..}, {..}, etc.]
              * Group stage: Matchday 1: [{..}, {..}, {..}, etc.]
              * 
@@ -35,7 +35,7 @@ export const fetchData = createAsyncThunk(
              * 
              */
 
-            const whichMatchday = Object.keys(dataInObject)[0] //To say "matchday 3, 4, 5 or so"
+            const whichMatchday = Object.keys(dataInObject)[0] //This will contain "Group stage: Matchday 3, 2, 1 or so"
             const latestMatchday = Object.values(dataInObject)[0]
 
             return [whichMatchday, latestMatchday] //Must return in an array/object as action.payload only accepts 1 argument
