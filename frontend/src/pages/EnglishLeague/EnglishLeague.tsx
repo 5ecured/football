@@ -1,6 +1,7 @@
 import { Box, CircularProgress, Container, Grid, Typography } from '@mui/material'
 import React, { useEffect } from 'react'
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import Fab from '@mui/material/Fab';
 import premierleague from '../../asset/premierleague.jpg'
 import { useStyles } from './style'
@@ -55,6 +56,10 @@ const EnglishLeague: React.FC<Props> = ({ showSidebar, setShowSidebar }) => {
             <ArrowForwardIcon />
           </Fab>
         }
+
+        <Fab sx={{ position: 'fixed', bottom: 20, right: 20 }} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+          <ArrowUpwardIcon />
+        </Fab>
       </Container>
     </Box>
   )
