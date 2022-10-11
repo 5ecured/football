@@ -54,6 +54,7 @@ const Modal: React.FC<Props> = ({ setOpen }) => {
 
         if (player.name && player.club) {
             // dispatch(addPlayer(player))
+
             dispatch(createPlayer(player))
             setOpen(false)
         }

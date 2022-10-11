@@ -56,6 +56,19 @@ export const updatePlayer = createAsyncThunk(
     }
 )
 
+export const removePlayer = createAsyncThunk(
+    'player/removePlayer',
+    async (playerId: any, thunkAPI) => {
+        try {
+            //With axios.delete, have to pass the 2nd arg like this, so in backend we can access it thru req.body.playerId
+            await axios.delete('http://localhost:8080/', { data: { playerId } })
+            return playerId
+        } catch (error) {
+            return thunkAPI.rejectWithValue(error)
+        }
+    }
+)
+
 
 export const playerSlice = createSlice({
     name: 'player',
@@ -93,6 +106,10 @@ export const playerSlice = createSlice({
         })
         builder.addCase(updatePlayer.fulfilled, (state, action) => {
             const temp = state.mainArray.map(player => player._id === action.payload._id ? action.payload : player)
+            state.mainArray = temp
+        })
+        builder.addCase(removePlayer.fulfilled, (state, action) => {
+            const temp = state.mainArray.filter(player => player._id !== action.payload)
             state.mainArray = temp
         })
     }

@@ -7,6 +7,9 @@ import EditIcon from '@mui/icons-material/Edit';
 import { useDispatch } from 'react-redux'
 import { deletePlayer, toggleFavourite } from '../../features/player/playerSlice'
 import GradeIcon from '@mui/icons-material/Grade';
+import { removePlayer } from '../../features/player/playerSlice'
+import { AppDispatch } from '../../app/store'
+
 
 interface Props {
   playersToDisplay: PlayerInterface[]
@@ -15,7 +18,7 @@ interface Props {
 
 const IndividualCard: React.FC<Props> = ({ playersToDisplay, whichPlayerToEdit }) => {
   const classes = useStyles()
-  const dispatch = useDispatch()
+  const dispatch = useDispatch<AppDispatch>()
 
 
   const render = playersToDisplay.map((player, i) => (
@@ -35,7 +38,11 @@ const IndividualCard: React.FC<Props> = ({ playersToDisplay, whichPlayerToEdit }
         <CardActions className={classes.cardActions}>
           <Box mb={2}>
             <Button variant='outlined' onClick={() => whichPlayerToEdit(player)}><EditIcon /></Button>
-            <Button variant='outlined' onClick={() => dispatch(deletePlayer(player.id!))}><DeleteIcon /></Button>
+            <Button variant='outlined' onClick={() => {
+              // dispatch(deletePlayer(player.id!))
+
+              dispatch(removePlayer(player._id))
+            }}><DeleteIcon /></Button>
             <Button variant={`${player.important ? 'contained' : 'outlined'}`} onClick={() => dispatch(toggleFavourite(player.id!))}><GradeIcon /></Button>
           </Box>
         </CardActions>

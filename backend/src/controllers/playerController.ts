@@ -29,3 +29,18 @@ export const editPlayer = async (req: Request, res: Response) => {
         console.log(error);
     }
 }
+
+export const deletePlayer = async (req: Request, res: Response) => {
+    try {
+        //in frontend: 
+        //await axios.delete('http://localhost:8080/', { data: { playerId } })
+        //now we can access playerId inside req.body.playerId
+        const { playerId } = req.body
+
+        // Need to return something to the frontend, otherwise the extraReducers will be in 'pending' instead of 'fulfilled'
+        const deleted = await Player.findByIdAndDelete(playerId)
+        res.status(200).json(deleted)
+    } catch (error) {
+        console.log(error);
+    }
+}
