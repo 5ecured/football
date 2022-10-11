@@ -30,4 +30,5 @@ const PlayerSchema = new Schema<Player>({
     }
 })
 
-export default model<Player>('Player', PlayerSchema)
+const Player = model<Player>('Player', PlayerSchema)
+export default Player

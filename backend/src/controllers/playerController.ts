@@ -9,3 +9,12 @@ export const getAllPlayers = async (req: Request, res: Response) => {
         console.log(error);
     }
 }
+
+export const createPlayer = async (req: Request, res: Response) => {
+    try {
+        const newPlayer = await Player.create(req.body)
+        res.status(201).json(newPlayer)
+    } catch (error) {
+        console.log(error);
+    }
+}

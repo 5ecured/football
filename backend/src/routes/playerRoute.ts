@@ -1,5 +1,8 @@
 import { Router } from "express";
-import { getAllPlayers } from "../controllers/playerController";
+import { createPlayer, getAllPlayers } from "../controllers/playerController";
 const router: Router = Router()
 
 router.get('/', getAllPlayers)
+router.post('/', createPlayer)
+
+export default router
