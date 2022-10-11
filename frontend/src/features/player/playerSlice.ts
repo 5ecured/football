@@ -44,6 +44,18 @@ export const createPlayer = createAsyncThunk(
     }
 )
 
+export const updatePlayer = createAsyncThunk(
+    'player/updatePlayer',
+    async (playerObj: PlayerInterface, thunkAPI) => {
+        try {
+            const { data } = await axios.put('http://localhost:8080/', playerObj)
+            return data
+        } catch (error) {
+            return thunkAPI.rejectWithValue(error)
+        }
+    }
+)
+
 
 export const playerSlice = createSlice({
     name: 'player',
@@ -77,8 +89,11 @@ export const playerSlice = createSlice({
             })
         })
         builder.addCase(createPlayer.fulfilled, (state, action: PayloadAction<unknown | any>) => {
-            console.log(action.payload._id);
             state.mainArray.unshift(action.payload)
+        })
+        builder.addCase(updatePlayer.fulfilled, (state, action) => {
+            const temp = state.mainArray.map(player => player._id === action.payload._id ? action.payload : player)
+            state.mainArray = temp
         })
     }
 })

@@ -34,7 +34,6 @@ const Main: React.FC<Props> = ({ showSidebar, setShowSidebar }) => {
     dispatch(fetchFromBackend())
   }, [])
 
-  originalData.forEach(el => console.log(el.id))
 
   const whichPlayerToEdit = (obj: PlayerInterface) => {
     window.scrollTo({ top: 0, behavior: 'smooth' })

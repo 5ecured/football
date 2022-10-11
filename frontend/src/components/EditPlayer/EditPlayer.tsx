@@ -5,6 +5,8 @@ import { PlayerInterface } from '../../features/player/playerSlice'
 import { useDispatch } from 'react-redux'
 import { editPlayer } from '../../features/player/playerSlice'
 import { delay } from '../../utils/functions'
+import { updatePlayer } from '../../features/player/playerSlice'
+import { AppDispatch } from '../../app/store'
 
 
 interface Props {
@@ -17,7 +19,7 @@ const EditPlayer: React.FC<Props> = ({ playerToEdit, setEditing }) => {
     const [player, setPlayer] = useState<PlayerInterface>(playerToEdit)
     const [isNameEmpty, setIsNameEmpty] = useState<boolean>(false)
     const [isClubEmpty, setIsClubEmpty] = useState<boolean>(false)
-    const dispatch = useDispatch()
+    const dispatch = useDispatch<AppDispatch>()
 
     useEffect(() => {
         setPlayer(playerToEdit)
@@ -48,7 +50,9 @@ const EditPlayer: React.FC<Props> = ({ playerToEdit, setEditing }) => {
 
         if (player.name && player.club) {
             //RTK action payload only accepts 1 argument. For multiple args, use an array/object
-            dispatch(editPlayer([player, player.id]))
+            // dispatch(editPlayer([player, player.id]))
+
+            dispatch(updatePlayer(player))
             setEditing(false)
         }
     }
