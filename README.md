@@ -10,8 +10,10 @@ I am constantly adding new features to this project. Currently this project only
 - Redux Toolkit
 - React Router
 - Rapid API
+- Node
+- Express
+- MongoDB
 
 ## TODO
 
-- Add backend
 - Enable image upload in frontend
