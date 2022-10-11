@@ -5,7 +5,7 @@ import { PlayerInterface } from '../../features/player/playerSlice'
 import { useDispatch } from 'react-redux'
 import { editPlayer } from '../../features/player/playerSlice'
 import { delay } from '../../utils/functions'
-import { updatePlayer } from '../../features/player/playerSlice'
+import { updatePlayer } from '../../utils/functions'
 import { AppDispatch } from '../../app/store'
 
 

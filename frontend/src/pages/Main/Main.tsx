@@ -10,7 +10,7 @@ import EditPlayer from '../../components/EditPlayer/EditPlayer'
 import Fab from '@mui/material/Fab';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import { fetchFromBackend } from '../../features/player/playerSlice'
+import { fetchFromBackend } from '../../utils/functions'
 import { AppDispatch } from '../../app/store'
 
 

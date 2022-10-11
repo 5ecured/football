@@ -7,7 +7,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import { useDispatch } from 'react-redux'
 import { deletePlayer, toggleFavourite } from '../../features/player/playerSlice'
 import GradeIcon from '@mui/icons-material/Grade';
-import { removePlayer } from '../../features/player/playerSlice'
+import { removePlayer } from '../../utils/functions';
 import { AppDispatch } from '../../app/store'
 
 
