@@ -1,15 +1,17 @@
-import React, { useState } from 'react'
-import { Container, Button, Typography, Box, Grid, Modal, TextField } from '@mui/material'
+import React, { useEffect, useState } from 'react'
+import { Container, Button, Box, Grid, Modal, TextField } from '@mui/material'
 import { useStyles } from './style'
 import IndividualCard from '../../components/IndividualCard/IndividualCard'
 import type { RootState } from '../../app/store'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import MyModal from '../../components/MyModal/MyModal'
 import { PlayerInterface } from '../../features/player/playerSlice'
 import EditPlayer from '../../components/EditPlayer/EditPlayer'
 import Fab from '@mui/material/Fab';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import { fetchFromBackend } from '../../features/player/playerSlice'
+import { AppDispatch } from '../../app/store'
 
 
 interface Props {
@@ -19,6 +21,7 @@ interface Props {
 
 const Main: React.FC<Props> = ({ showSidebar, setShowSidebar }) => {
   const classes = useStyles()
+  const dispatch = useDispatch<AppDispatch>()
   const originalData = useSelector((state: RootState) => state.player.mainArray)
 
   const [open, setOpen] = useState<boolean>(false)
@@ -26,6 +29,10 @@ const Main: React.FC<Props> = ({ showSidebar, setShowSidebar }) => {
   const [playerToEdit, setPlayerToEdit] = useState<PlayerInterface>({ id: null, name: '', club: '', important: false })
   const [filteredText, setFilteredText] = useState<string>('')
   const [showFavorite, setShowFavorite] = useState<boolean>(false)
+
+  useEffect(() => {
+    dispatch(fetchFromBackend())
+  }, [])
 
   const whichPlayerToEdit = (obj: PlayerInterface) => {
     window.scrollTo({ top: 0, behavior: 'smooth' })

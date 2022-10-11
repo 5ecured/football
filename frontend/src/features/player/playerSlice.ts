@@ -1,6 +1,7 @@
-import { createSlice, current } from "@reduxjs/toolkit"
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 import type { PayloadAction } from '@reduxjs/toolkit'
 import { initialData } from "../../utils/initialData"
+import axios from 'axios'
 
 export interface PlayerInterface {
     id: number | null
@@ -17,6 +18,20 @@ export interface PlayerState {
 const initialState: PlayerState = {
     mainArray: initialData
 }
+
+export const fetchFromBackend = createAsyncThunk(
+    'player/fetchFromBackend',
+    async (_, thunkAPI) => {
+        try {
+            const { data } = await axios.get('http://localhost:8080/')
+            if (data) {
+                return data
+            }
+        } catch (error) {
+            return thunkAPI.rejectWithValue(error)
+        }
+    }
+)
 
 
 export const playerSlice = createSlice({
@@ -43,6 +58,19 @@ export const playerSlice = createSlice({
             const temp = state.mainArray.map(player => player.id === action.payload ? playerToToggle : player)
             state.mainArray = temp
         }
+    },
+    extraReducers: (builder) => {
+        builder.addCase(fetchFromBackend.pending, (state, action) => {
+
+        })
+        builder.addCase(fetchFromBackend.fulfilled, (state, action: PayloadAction<unknown | any>) => {
+            action.payload.forEach((player: PlayerInterface) => {
+                state.mainArray.unshift(player)
+            })
+        })
+        builder.addCase(fetchFromBackend.rejected, (state, action) => {
+
+        })
     }
 })
 
