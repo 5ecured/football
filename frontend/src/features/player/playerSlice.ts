@@ -4,7 +4,8 @@ import { initialData } from "../../utils/initialData"
 import axios from 'axios'
 
 export interface PlayerInterface {
-    id: number | null
+    id?: string,
+    _id?: null,
     name: string
     club: string,
     image?: string,
@@ -24,9 +25,19 @@ export const fetchFromBackend = createAsyncThunk(
     async (_, thunkAPI) => {
         try {
             const { data } = await axios.get('http://localhost:8080/')
-            if (data) {
-                return data
-            }
+            return data
+        } catch (error) {
+            return thunkAPI.rejectWithValue(error)
+        }
+    }
+)
+
+export const createPlayer = createAsyncThunk(
+    'player/createPlayer',
+    async (playerObj: PlayerInterface, thunkAPI) => {
+        try {
+            const { data } = await axios.post('http://localhost:8080/', playerObj)
+            return data
         } catch (error) {
             return thunkAPI.rejectWithValue(error)
         }
@@ -39,10 +50,10 @@ export const playerSlice = createSlice({
     initialState,
     reducers: {
         addPlayer: (state, action: PayloadAction<PlayerInterface>) => {
-            action.payload.id = state.mainArray.length + 1
+            action.payload.id = String(state.mainArray.length + 1)
             state.mainArray.unshift(action.payload)
         },
-        deletePlayer: (state, action: PayloadAction<number | null>) => {
+        deletePlayer: (state, action: PayloadAction<string>) => {
             const temp = state.mainArray.filter(player => player.id !== action.payload)
             state.mainArray = temp
         },
@@ -52,7 +63,7 @@ export const playerSlice = createSlice({
             const temp = state.mainArray.map(player => player.id === id ? obj : player)
             state.mainArray = temp
         },
-        toggleFavourite: (state, action: PayloadAction<number | null>) => {
+        toggleFavourite: (state, action: PayloadAction<string>) => {
             const playerToToggle: any = state.mainArray.find(player => player.id === action.payload)
             playerToToggle.important = !(playerToToggle.important)
             const temp = state.mainArray.map(player => player.id === action.payload ? playerToToggle : player)
@@ -60,16 +71,14 @@ export const playerSlice = createSlice({
         }
     },
     extraReducers: (builder) => {
-        builder.addCase(fetchFromBackend.pending, (state, action) => {
-
-        })
         builder.addCase(fetchFromBackend.fulfilled, (state, action: PayloadAction<unknown | any>) => {
             action.payload.forEach((player: PlayerInterface) => {
                 state.mainArray.unshift(player)
             })
         })
-        builder.addCase(fetchFromBackend.rejected, (state, action) => {
-
+        builder.addCase(createPlayer.fulfilled, (state, action: PayloadAction<unknown | any>) => {
+            console.log(action.payload._id);
+            state.mainArray.unshift(action.payload)
         })
     }
 })

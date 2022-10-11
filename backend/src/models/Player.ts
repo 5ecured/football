@@ -1,7 +1,7 @@
 import { Schema, model } from "mongoose"
 
 export interface Player {
-    id: number | null
+    // id: number | null
     name: string
     club: string,
     image?: string,
@@ -9,10 +9,9 @@ export interface Player {
 }
 
 const PlayerSchema = new Schema<Player>({
-    id: {
-        type: Number,
-        required: true
-    },
+    // id: {
+    //     type: Number,
+    // },
     name: {
         type: String,
         required: true

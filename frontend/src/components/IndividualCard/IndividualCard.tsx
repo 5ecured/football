@@ -35,8 +35,8 @@ const IndividualCard: React.FC<Props> = ({ playersToDisplay, whichPlayerToEdit }
         <CardActions className={classes.cardActions}>
           <Box mb={2}>
             <Button variant='outlined' onClick={() => whichPlayerToEdit(player)}><EditIcon /></Button>
-            <Button variant='outlined' onClick={() => dispatch(deletePlayer(player.id))}><DeleteIcon /></Button>
-            <Button variant={`${player.important ? 'contained' : 'outlined'}`} onClick={() => dispatch(toggleFavourite(player.id))}><GradeIcon /></Button>
+            <Button variant='outlined' onClick={() => dispatch(deletePlayer(player.id!))}><DeleteIcon /></Button>
+            <Button variant={`${player.important ? 'contained' : 'outlined'}`} onClick={() => dispatch(toggleFavourite(player.id!))}><GradeIcon /></Button>
           </Box>
         </CardActions>
       </Card>

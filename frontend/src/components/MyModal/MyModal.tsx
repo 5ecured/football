@@ -5,6 +5,10 @@ import AddIcon from '@mui/icons-material/Add';
 import { useDispatch } from 'react-redux';
 import { addPlayer, PlayerInterface } from '../../features/player/playerSlice';
 import { delay } from '../../utils/functions'
+import { createPlayer } from '../../features/player/playerSlice'
+import { AppDispatch } from '../../app/store'
+
+
 
 interface Props {
     setOpen: React.Dispatch<React.SetStateAction<boolean>>
@@ -13,11 +17,11 @@ interface Props {
 
 const Modal: React.FC<Props> = ({ setOpen }) => {
     const classes = useStyles()
-    const dispatch = useDispatch()
+    const dispatch = useDispatch<AppDispatch>()
 
 
     const [selectedFile, setSelectedFile] = useState<object | undefined>(undefined)
-    const [player, setPlayer] = useState<PlayerInterface>({ id: null, name: '', club: '', important: false })
+    const [player, setPlayer] = useState<PlayerInterface>({ id: '', name: '', club: '', important: false })
     const [isNameEmpty, setIsNameEmpty] = useState<boolean>(false)
     const [isClubEmpty, setIsClubEmpty] = useState<boolean>(false)
 
@@ -25,7 +29,6 @@ const Modal: React.FC<Props> = ({ setOpen }) => {
         setSelectedFile(e.target.files![0])
     }
 
-    console.log('player.id', player.id)
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setPlayer({ ...player, [e.target.name]: e.target.value })
@@ -50,7 +53,8 @@ const Modal: React.FC<Props> = ({ setOpen }) => {
         if (!player.club) triggerClubError()
 
         if (player.name && player.club) {
-            dispatch(addPlayer(player))
+            // dispatch(addPlayer(player))
+            dispatch(createPlayer(player))
             setOpen(false)
         }
     }

@@ -18,3 +18,14 @@ export const createPlayer = async (req: Request, res: Response) => {
         console.log(error);
     }
 }
+
+export const editPlayer = async (req: Request, res: Response) => {
+    try {
+        const id = req.body._id
+        const editPlayer = { name: req.body.name, club: req.body.club, important: req.body.important }
+        const updatedPlayer = await Player.findById(id, editPlayer, { new: true })
+        res.status(200).json(updatedPlayer)
+    } catch (error) {
+        console.log(error);
+    }
+}

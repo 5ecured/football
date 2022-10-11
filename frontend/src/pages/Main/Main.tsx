@@ -26,13 +26,15 @@ const Main: React.FC<Props> = ({ showSidebar, setShowSidebar }) => {
 
   const [open, setOpen] = useState<boolean>(false)
   const [editing, setEditing] = useState<boolean>(false)
-  const [playerToEdit, setPlayerToEdit] = useState<PlayerInterface>({ id: null, name: '', club: '', important: false })
+  const [playerToEdit, setPlayerToEdit] = useState<PlayerInterface>({ id: '', name: '', club: '', important: false })
   const [filteredText, setFilteredText] = useState<string>('')
   const [showFavorite, setShowFavorite] = useState<boolean>(false)
 
   useEffect(() => {
     dispatch(fetchFromBackend())
   }, [])
+
+  originalData.forEach(el => console.log(el.id))
 
   const whichPlayerToEdit = (obj: PlayerInterface) => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
