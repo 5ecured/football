@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 import type { PayloadAction } from '@reduxjs/toolkit'
 import { initialData } from "../../utils/initialData"
-import { fetchFromBackend, createPlayer, updatePlayer, removePlayer } from "../../utils/functions"
+import { fetchFromBackend, createPlayer, updatePlayer, removePlayer, togglePlayer } from "../../utils/functions"
 
 export interface PlayerInterface {
     id?: string,
@@ -61,6 +61,10 @@ export const playerSlice = createSlice({
         })
         builder.addCase(removePlayer.fulfilled, (state, action) => {
             const temp = state.mainArray.filter(player => player._id !== action.payload)
+            state.mainArray = temp
+        })
+        builder.addCase(togglePlayer.fulfilled, (state, action) => {
+            const temp = state.mainArray.map(player => player._id === action.payload._id ? action.payload : player)
             state.mainArray = temp
         })
     }

@@ -100,3 +100,15 @@ export const removePlayer = createAsyncThunk(
         }
     }
 )
+
+export const togglePlayer = createAsyncThunk(
+    'player/togglePlayer',
+    async (playerObj: PlayerInterface, thunkAPI) => {
+        try {
+            const { data } = await axios.patch('http://localhost:8080/', playerObj)
+            return data
+        } catch (error) {
+            return thunkAPI.rejectWithValue(error)
+        }
+    }
+)

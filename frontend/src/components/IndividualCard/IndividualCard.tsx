@@ -7,7 +7,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import { useDispatch } from 'react-redux'
 import { deletePlayer, toggleFavourite } from '../../features/player/playerSlice'
 import GradeIcon from '@mui/icons-material/Grade';
-import { removePlayer } from '../../utils/functions';
+import { removePlayer, togglePlayer } from '../../utils/functions';
 import { AppDispatch } from '../../app/store'
 
 
@@ -27,6 +27,7 @@ const IndividualCard: React.FC<Props> = ({ playersToDisplay, whichPlayerToEdit }
         <CardMedia
           image={player.image}
           className={classes.image}
+          component='image'
         />
         <CardContent>
           <Typography textAlign='center'>
@@ -43,7 +44,11 @@ const IndividualCard: React.FC<Props> = ({ playersToDisplay, whichPlayerToEdit }
 
               dispatch(removePlayer(player._id))
             }}><DeleteIcon /></Button>
-            <Button variant={`${player.important ? 'contained' : 'outlined'}`} onClick={() => dispatch(toggleFavourite(player.id!))}><GradeIcon /></Button>
+            <Button variant={`${player.important ? 'contained' : 'outlined'}`} onClick={() => {
+              // dispatch(toggleFavourite(player.id!))
+
+              dispatch(togglePlayer(player))
+            }}><GradeIcon /></Button>
           </Box>
         </CardActions>
       </Card>

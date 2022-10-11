@@ -22,8 +22,8 @@ export const createPlayer = async (req: Request, res: Response) => {
 export const editPlayer = async (req: Request, res: Response) => {
     try {
         const id = req.body._id
-        const editPlayer = { name: req.body.name, club: req.body.club, important: req.body.important }
-        const updatedPlayer = await Player.findByIdAndUpdate(id, editPlayer, { new: true })
+        const playerFromFrontend = { name: req.body.name, club: req.body.club, important: req.body.important }
+        const updatedPlayer = await Player.findByIdAndUpdate(id, playerFromFrontend, { new: true })
         res.status(200).json(updatedPlayer)
     } catch (error) {
         console.log(error);
@@ -40,6 +40,17 @@ export const deletePlayer = async (req: Request, res: Response) => {
         // Need to return something to the frontend, otherwise the extraReducers will be in 'pending' instead of 'fulfilled'
         const deleted = await Player.findByIdAndDelete(playerId)
         res.status(200).json(deleted)
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export const togglePlayer = async (req: Request, res: Response) => {
+    try {
+        const id = req.body._id
+        const playerFromFrontend = { name: req.body.name, club: req.body.club, important: !req.body.important }
+        const toggledPlayer = await Player.findByIdAndUpdate(id, playerFromFrontend, { new: true })
+        res.status(200).json(toggledPlayer)
     } catch (error) {
         console.log(error);
     }
