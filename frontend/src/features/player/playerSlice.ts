@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 import type { PayloadAction } from '@reduxjs/toolkit'
 import { initialData } from "../../utils/initialData"
-import { fetchFromBackend, createPlayer, updatePlayer, removePlayer, togglePlayer } from "../../utils/functions"
+import { fetchFromBackend, createPlayer, updatePlayer, removePlayer, togglePlayer } from "../../api/backendAPI"
 
 export interface PlayerInterface {
     id?: string,

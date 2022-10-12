@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 import axios from "axios"
 import type { PayloadAction } from "@reduxjs/toolkit"
-import { englishPremierLeagueOptions } from "../../utils/functions"
+import { englishPremierLeagueOptions } from "../../api/footballAPI"
 
 export interface EnglishPremierLeagueInterface {
     matchday: string

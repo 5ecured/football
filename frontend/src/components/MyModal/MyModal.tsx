@@ -5,7 +5,7 @@ import AddIcon from '@mui/icons-material/Add';
 import { useDispatch } from 'react-redux';
 import { addPlayer, PlayerInterface } from '../../features/player/playerSlice';
 import { delay } from '../../utils/functions'
-import { createPlayer } from '../../utils/functions';
+import { createPlayer } from '../../api/backendAPI';
 import { AppDispatch } from '../../app/store'
 
 
