@@ -8,6 +8,21 @@ import { delay } from '../../utils/functions'
 import { createPlayer } from '../../api/backendAPI';
 import { AppDispatch } from '../../app/store'
 
+/**
+ * for react-file-base64 import, there are 2 options to ignore the TS error:
+ * 
+ * 1. use // @ts-ignore directly above that import line like so:
+ * 
+ * // @ts-ignore
+ * import FileBase from 'react-file-base64'
+ * 
+ * 2. create a folder 'src/types/react-file-base64/index.d.ts' and inside, just type:
+ * declare module 'react-file-base64'
+ */
+
+import FileBase from 'react-file-base64'
+
+
 
 
 interface Props {
@@ -24,6 +39,8 @@ const Modal: React.FC<Props> = ({ setOpen }) => {
     const [player, setPlayer] = useState<PlayerInterface>({ id: '', name: '', club: '', important: false })
     const [isNameEmpty, setIsNameEmpty] = useState<boolean>(false)
     const [isClubEmpty, setIsClubEmpty] = useState<boolean>(false)
+
+    console.log('player', player)
 
     const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
         setSelectedFile(e.target.files![0])
@@ -85,7 +102,12 @@ const Modal: React.FC<Props> = ({ setOpen }) => {
                     {isClubEmpty && <Typography color='error'>Please enter a club</Typography>}
                     <Box className={classes.imageField}>
                         <Typography>Image (optional)</Typography>
-                        <input type='file' accept='.png, .jpg, .jpeg .webp' name='file' onChange={handleFileUpload} />
+                        {/* <input type='file' accept='.png, .jpg, .jpeg .webp' name='file' onChange={handleFileUpload} /> */}
+                        <FileBase
+                            type='file'
+                            multiple={false}
+                            onDone={({ base64 }: { base64: any }) => setPlayer({ ...player, photo: base64 })}
+                        />
                     </Box>
                     <Button type='submit' className={classes.addPlayer} variant='contained'>
                         <AddIcon />

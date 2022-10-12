@@ -8,7 +8,7 @@ export interface PlayerInterface {
     _id?: null,
     name: string
     club: string,
-    image?: string,
+    photo?: string,
     important: boolean
 }
 

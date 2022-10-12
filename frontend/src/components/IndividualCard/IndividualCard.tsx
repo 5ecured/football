@@ -25,7 +25,7 @@ const IndividualCard: React.FC<Props> = ({ playersToDisplay, whichPlayerToEdit }
     <Grid item xs={12} lg={4} className={classes.center} mt={5} key={i}>
       <Card>
         <CardMedia
-          image={player.image}
+          image={player.photo}
           className={classes.image}
           component='image'
         />

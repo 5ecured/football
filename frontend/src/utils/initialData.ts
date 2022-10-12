@@ -14,7 +14,7 @@ interface playerInterface {
     _id?: null,
     name: string
     club: string,
-    image?: string,
+    photo?: string,
     important: boolean
 }
 
@@ -23,63 +23,63 @@ export const initialData: playerInterface[] = [
         id: '1',
         name: 'Cristiano Ronaldo',
         club: 'Manchester United',
-        image: ronaldo,
+        photo: ronaldo,
         important: true
     },
     {
         id: '2',
         name: 'Lionel Messi',
         club: 'Paris Saint Germain',
-        image: messi,
+        photo: messi,
         important: false
     },
     {
         id: '3',
         name: 'Didier Drogba',
         club: 'Chelsea',
-        image: drogba,
+        photo: drogba,
         important: true
     },
     {
         id: '4',
         name: 'Toni Kroos',
         club: 'Real Madrid',
-        image: kroos,
+        photo: kroos,
         important: true
     },
     {
         id: '5',
         name: 'Robert Lewandowski',
         club: 'Barcelona',
-        image: lewandowski,
+        photo: lewandowski,
         important: false
     },
     {
         id: '6',
         name: 'Kaka',
         club: 'AC Milan',
-        image: kaka,
+        photo: kaka,
         important: true
     },
     {
         id: '7',
         name: 'Fernando Torres',
         club: 'Liverpool',
-        image: torres,
+        photo: torres,
         important: true
     },
     {
         id: '8',
         name: 'Samuel Eto',
         club: 'Inter Milan',
-        image: eto,
+        photo: eto,
         important: false
     },
     {
         id: '9',
         name: 'Harry Maguire',
         club: 'Manchester United',
-        image: maguire,
+        photo: maguire,
         important: false
     }
 ]

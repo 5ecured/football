@@ -4,7 +4,7 @@ export interface Player {
     // id: number | null
     name: string
     club: string,
-    image?: string,
+    photo?: string,
     important: boolean
 }
 
@@ -20,7 +20,7 @@ const PlayerSchema = new Schema<Player>({
         type: String,
         required: true
     },
-    image: {
+    photo: {
         type: String
     },
     important: {
