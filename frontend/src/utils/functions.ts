@@ -49,7 +49,7 @@ export const italianLeagueOptions = {
 };
 
 /**
- * FOR REDUX TOOLKIT EXTRAREDUCERS
+ * FOR REDUX TOOLKIT EXTRAREDUCERS for CRUD functionalities
  */
 
 export const fetchFromBackend = createAsyncThunk(
