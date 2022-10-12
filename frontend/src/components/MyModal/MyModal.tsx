@@ -85,7 +85,7 @@ const Modal: React.FC<Props> = ({ setOpen }) => {
                     {isClubEmpty && <Typography color='error'>Please enter a club</Typography>}
                     <Box className={classes.imageField}>
                         <Typography>Image (optional)</Typography>
-                        <input type='file' name='file' onChange={handleFileUpload} />
+                        <input type='file' accept='.png, .jpg, .jpeg .webp' name='file' onChange={handleFileUpload} />
                     </Box>
                     <Button type='submit' className={classes.addPlayer} variant='contained'>
                         <AddIcon />

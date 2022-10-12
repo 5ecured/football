@@ -1,6 +1,9 @@
 # Football project that shows information about clubs, players, etc.
 
-I am constantly adding new features to this project. Currently this project only has the frontend - will add the backend later
+I am constantly adding new features to this project. Currently this project only has the frontend - will add the backend later.
+
+### Update
+Backend has been implemented and now properly connected to a database.
 
 ## Tech stack
 
@@ -16,4 +19,4 @@ I am constantly adding new features to this project. Currently this project only
 
 ## TODO
 
-- Enable image upload in frontend
+- Enable image upload 

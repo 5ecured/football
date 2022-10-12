@@ -8,7 +8,7 @@ import torres from '../asset/torres.jpg'
 import eto from '../asset/eto.jpg'
 import maguire from '../asset/maguire.jpeg'
 
-//TODO change playerIntarface as i plan to remove all static data and instead fetch from mongodb
+//TODO change playerIntarface (remove id maybe) as i plan to remove all static data and instead fetch from mongodb
 interface playerInterface {
     id?: string,
     _id?: null,
