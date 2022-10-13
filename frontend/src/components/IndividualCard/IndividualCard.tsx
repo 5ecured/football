@@ -66,7 +66,7 @@ const IndividualCard: React.FC<Props> = ({ playersToDisplay, whichPlayerToEdit }
     )
   } else {
     return (
-      <Typography sx={{ marginTop: 5 }} variant='h6'>No player. Click the button above to start adding some!</Typography>
+      <Typography sx={{ marginTop: 5 }} variant='h6'>No player. Start adding by clicking the button above</Typography>
     )
   }
 }

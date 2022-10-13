@@ -41,7 +41,6 @@ const Main: React.FC<Props> = ({ showSidebar, setShowSidebar }) => {
     setPlayerToEdit(obj)
   }
 
-  originalData.forEach(el => console.log(el))
 
   let display = originalData.filter(player => {
     return (

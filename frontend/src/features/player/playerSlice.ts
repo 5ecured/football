@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit"
 import type { PayloadAction } from '@reduxjs/toolkit'
-import { initialData } from "../../utils/initialData"
+// import { initialData } from "../../utils/initialData"
 import { fetchFromBackend, createPlayer, updatePlayer, removePlayer, togglePlayer } from "../../api/frontToBackAPI"
 
 export interface PlayerInterface {
@@ -17,7 +17,7 @@ export interface PlayerState {
 }
 
 const initialState: PlayerState = {
-    mainArray: initialData
+    mainArray: []
 }
 
 

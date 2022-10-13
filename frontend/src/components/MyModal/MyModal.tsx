@@ -92,7 +92,10 @@ const Modal: React.FC<Props> = ({ setOpen }) => {
                     />
                     {isClubEmpty && <Typography color='error'>Please enter a club</Typography>}
                     <Box className={classes.imageField}>
-                        <Typography>Image (optional)</Typography>
+                        <Box>
+                            <Typography>Optional image</Typography>
+                            <Typography>(Less than 70 KB)</Typography>
+                        </Box>
                         {/* <input type='file' accept='.png, .jpg, .jpeg .webp' name='file' onChange={handleFileUpload} /> */}
                         <FileBase
                             type='file'
