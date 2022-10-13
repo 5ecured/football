@@ -1,11 +1,11 @@
-import { Box, Button, Paper, Stack, TextField, Typography } from '@mui/material'
+import { Box, Button, Stack, TextField, Typography } from '@mui/material'
 import React, { useState } from 'react'
 import { useStyles } from './style'
 import AddIcon from '@mui/icons-material/Add';
 import { useDispatch } from 'react-redux';
 import { addPlayer, PlayerInterface } from '../../features/player/playerSlice';
 import { delay } from '../../utils/functions'
-import { createPlayer } from '../../api/backendAPI';
+import { createPlayer } from '../../api/frontToBackAPI';
 import { AppDispatch } from '../../app/store'
 
 /**
@@ -23,8 +23,6 @@ import { AppDispatch } from '../../app/store'
 import FileBase from 'react-file-base64'
 
 
-
-
 interface Props {
     setOpen: React.Dispatch<React.SetStateAction<boolean>>
 }
@@ -34,18 +32,11 @@ const Modal: React.FC<Props> = ({ setOpen }) => {
     const classes = useStyles()
     const dispatch = useDispatch<AppDispatch>()
 
-
-    const [selectedFile, setSelectedFile] = useState<object | undefined>(undefined)
-    const [player, setPlayer] = useState<PlayerInterface>({ id: '', name: '', club: '', important: false })
+    const [player, setPlayer] = useState<PlayerInterface>({ id: '', name: '', club: '', favorite: false })
     const [isNameEmpty, setIsNameEmpty] = useState<boolean>(false)
     const [isClubEmpty, setIsClubEmpty] = useState<boolean>(false)
 
     console.log('player', player)
-
-    const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setSelectedFile(e.target.files![0])
-    }
-
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setPlayer({ ...player, [e.target.name]: e.target.value })
@@ -106,6 +97,7 @@ const Modal: React.FC<Props> = ({ setOpen }) => {
                         <FileBase
                             type='file'
                             multiple={false}
+                            // { base64 }: { base64: any } below is how to do explicit type annotation when you are destructuring
                             onDone={({ base64 }: { base64: any }) => setPlayer({ ...player, photo: base64 })}
                         />
                     </Box>

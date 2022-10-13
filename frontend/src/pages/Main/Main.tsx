@@ -10,7 +10,7 @@ import EditPlayer from '../../components/EditPlayer/EditPlayer'
 import Fab from '@mui/material/Fab';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import { fetchFromBackend } from '../../api/backendAPI'
+import { fetchFromBackend } from '../../api/frontToBackAPI'
 import { AppDispatch } from '../../app/store'
 
 
@@ -26,7 +26,7 @@ const Main: React.FC<Props> = ({ showSidebar, setShowSidebar }) => {
 
   const [open, setOpen] = useState<boolean>(false)
   const [editing, setEditing] = useState<boolean>(false)
-  const [playerToEdit, setPlayerToEdit] = useState<PlayerInterface>({ id: '', name: '', club: '', important: false })
+  const [playerToEdit, setPlayerToEdit] = useState<PlayerInterface>({ id: '', name: '', club: '', favorite: false })
   const [filteredText, setFilteredText] = useState<string>('')
   const [showFavorite, setShowFavorite] = useState<boolean>(false)
 
@@ -50,7 +50,7 @@ const Main: React.FC<Props> = ({ showSidebar, setShowSidebar }) => {
     )
   })
 
-  let playersToDisplay = showFavorite ? display.filter(player => player.important) : display
+  let playersToDisplay = showFavorite ? display.filter(player => player.favorite) : display
 
   return (
     <Box flex={5}>
@@ -77,7 +77,7 @@ const Main: React.FC<Props> = ({ showSidebar, setShowSidebar }) => {
           </Box>
 
           <Box>
-            <Button onClick={() => setShowFavorite(!showFavorite)} variant='outlined' sx={{ height: 55, marginLeft: 5 }}>Showing {showFavorite ? 'favorite' : 'all'} players</Button>
+            <Button onClick={() => setShowFavorite(!showFavorite)} variant={showFavorite ? 'contained' : 'outlined'} sx={{ height: 55, marginLeft: 5 }}>Showing {showFavorite ? 'favorite' : 'all'} players</Button>
           </Box>
         </Box>
 

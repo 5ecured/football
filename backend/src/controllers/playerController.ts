@@ -22,7 +22,7 @@ export const createPlayer = async (req: Request, res: Response) => {
 export const editPlayer = async (req: Request, res: Response) => {
     try {
         const id = req.body._id
-        const playerFromFrontend = { name: req.body.name, club: req.body.club, important: req.body.important }
+        const playerFromFrontend = { name: req.body.name, club: req.body.club, favorite: req.body.favorite }
         const updatedPlayer = await Player.findByIdAndUpdate(id, playerFromFrontend, { new: true })
         res.status(200).json(updatedPlayer)
     } catch (error) {
@@ -48,7 +48,7 @@ export const deletePlayer = async (req: Request, res: Response) => {
 export const togglePlayer = async (req: Request, res: Response) => {
     try {
         const id = req.body._id
-        const playerFromFrontend = { name: req.body.name, club: req.body.club, important: !req.body.important }
+        const playerFromFrontend = { name: req.body.name, club: req.body.club, favorite: !req.body.favorite }
         const toggledPlayer = await Player.findByIdAndUpdate(id, playerFromFrontend, { new: true })
         res.status(200).json(toggledPlayer)
     } catch (error) {

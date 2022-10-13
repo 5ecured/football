@@ -1,7 +1,7 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
+import { createSlice } from "@reduxjs/toolkit"
 import type { PayloadAction } from '@reduxjs/toolkit'
 import { initialData } from "../../utils/initialData"
-import { fetchFromBackend, createPlayer, updatePlayer, removePlayer, togglePlayer } from "../../api/backendAPI"
+import { fetchFromBackend, createPlayer, updatePlayer, removePlayer, togglePlayer } from "../../api/frontToBackAPI"
 
 export interface PlayerInterface {
     id?: string,
@@ -9,7 +9,7 @@ export interface PlayerInterface {
     name: string
     club: string,
     photo?: string,
-    important: boolean
+    favorite: boolean
 }
 
 export interface PlayerState {
@@ -41,7 +41,7 @@ export const playerSlice = createSlice({
         },
         toggleFavourite: (state, action: PayloadAction<string>) => {
             const playerToToggle: any = state.mainArray.find(player => player.id === action.payload)
-            playerToToggle.important = !(playerToToggle.important)
+            playerToToggle.favorite = !(playerToToggle.favorite)
             const temp = state.mainArray.map(player => player.id === action.payload ? playerToToggle : player)
             state.mainArray = temp
         }

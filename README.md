@@ -2,8 +2,12 @@
 
 I am constantly adding new features to this project. Currently this project only has the frontend - will add the backend later.
 
+### Update v1
+Image upload has been implemented
+
 ### Update
 Backend has been implemented and now properly connected to a database.
+
 
 ## Tech stack
 
@@ -19,4 +23,4 @@ Backend has been implemented and now properly connected to a database.
 
 ## TODO
 
-- Enable image upload 
+- Add more features

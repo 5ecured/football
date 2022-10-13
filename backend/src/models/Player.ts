@@ -5,7 +5,7 @@ export interface Player {
     name: string
     club: string,
     photo?: string,
-    important: boolean
+    favorite: boolean
 }
 
 const PlayerSchema = new Schema<Player>({
@@ -23,7 +23,7 @@ const PlayerSchema = new Schema<Player>({
     photo: {
         type: String
     },
-    important: {
+    favorite: {
         type: Boolean,
         required: true
     }
