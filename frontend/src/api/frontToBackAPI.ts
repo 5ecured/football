@@ -44,7 +44,9 @@ export const removePlayer = createAsyncThunk(
     'player/removePlayer',
     async (playerId: any, thunkAPI) => {
         try {
-            //With axios.delete, have to pass the 2nd arg like this, so in backend we can access it thru req.body.playerId
+            //With axios.delete, commonly no argument is passed, we use params.id instead. 
+            //if you still want to pass in something, have to pass the 2nd arg like this, 
+            //so in backend we can access it thru req.body.playerId
             await axios.delete(url, { data: { playerId } })
             return playerId
         } catch (error) {

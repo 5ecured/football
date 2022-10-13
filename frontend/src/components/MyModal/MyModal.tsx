@@ -36,7 +36,6 @@ const Modal: React.FC<Props> = ({ setOpen }) => {
     const [isNameEmpty, setIsNameEmpty] = useState<boolean>(false)
     const [isClubEmpty, setIsClubEmpty] = useState<boolean>(false)
 
-    console.log('player', player)
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setPlayer({ ...player, [e.target.name]: e.target.value })

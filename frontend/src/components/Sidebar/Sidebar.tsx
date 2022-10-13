@@ -1,6 +1,5 @@
 import React from 'react'
 import { Box, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Divider } from '@mui/material'
-import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import CloseIcon from '@mui/icons-material/Close';
 import { useStyles } from './style';
 import { Link } from 'react-router-dom'

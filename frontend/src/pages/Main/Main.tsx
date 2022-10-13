@@ -42,14 +42,14 @@ const Main: React.FC<Props> = ({ showSidebar, setShowSidebar }) => {
   }
 
 
-  let display = originalData.filter(player => {
+  let filteredOriginalData = originalData.filter(player => {
     return (
       player.name.toLowerCase().includes(filteredText.toLowerCase()) ||
       player.club.toLowerCase().includes(filteredText.toLowerCase())
     )
   })
 
-  let playersToDisplay = showFavorite ? display.filter(player => player.favorite) : display
+  let playersToDisplay = showFavorite ? filteredOriginalData.filter(player => player.favorite) : filteredOriginalData
 
   return (
     <Box flex={5}>
