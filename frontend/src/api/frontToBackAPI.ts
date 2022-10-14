@@ -2,7 +2,7 @@ import { PlayerInterface } from "../features/player/playerSlice";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from 'axios'
 
-const url = 'http://localhost:8080/'
+const url = 'https://football-backend.onrender.com'
 
 export const fetchFromBackend = createAsyncThunk(
     'player/fetchFromBackend',
