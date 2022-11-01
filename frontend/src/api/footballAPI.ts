@@ -18,7 +18,7 @@ export const englishPremierLeagueOptions = {
 
 export const spanishLeagueOptions = {
     method: 'GET',
-    url: 'https://football98.p.rapidapi.com/liga/results',
+    url: 'https://football98.p.rapidapi.com/laliga/results',
     headers: {
         'X-RapidAPI-Key': process.env.REACT_APP_RAPID,
         'X-RapidAPI-Host': 'football98.p.rapidapi.com'
