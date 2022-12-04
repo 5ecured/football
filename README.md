@@ -31,3 +31,4 @@ Basic frontend done
 ## TODO
 
 - Add more features
+- Add checkboxes
